@@ -13,11 +13,11 @@ const Footer = () => {
         className="absolute left-0 top-1/2 -translate-y-1/2 w-[256px] h-[256px] opacity-[0.45]"
         alt="decorative sphere"
       /> */}
-      <Container className="relative z-10 xxl:px-[240px] flex justify-center mt-[186.87px] mb-[50px]">
+      <Container className="relative z-10 xxl:px-[240px] flex justify-center pt-[100px] pb-[50px]">
         <div className="flex flex-col gap-[100px] max-w-[900px] items-center">
           <div className="flex flex-col items-center justify-center">
             <img className="w-[81px] h-[80px] mb-10" src={galbiLogo} />
-            <h2 className="font-semibold text-4xl text-center mb-[55px]">
+            <h2 className="leading-[1.4] font-semibold text-4xl text-center mb-[55px]">
               Galbi is made with love for people who still believe in
               intentional connection.
             </h2>
@@ -76,7 +76,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <p className="font-normal text-lg text-center">
+            <p className="leading-[1.4] font-normal text-lg text-center">
               @ 2025 Galbi. All rights reserved.
             </p>
           </div>

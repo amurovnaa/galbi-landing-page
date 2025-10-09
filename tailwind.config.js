@@ -19,6 +19,15 @@ export default {
         xl: "1440px",
         xxl: "1920px",
       },
+      keyframes: {
+        fade: {
+          "0%, 16.66%": { opacity: "1" },
+          "33.33%, 100%": { opacity: "0" },
+        },
+      },
+      animation: {
+        fade: "fade 30s linear infinite",
+      },
     },
   },
   plugins: [],
