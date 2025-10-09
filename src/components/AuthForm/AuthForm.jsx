@@ -1,133 +1,351 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { useForm, Controller } from "react-hook-form";
+import { Listbox } from "@headlessui/react";
+import { ChevronDownIcon } from "lucide-react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { loginUser, registerUser } from "../../redux/auth/operations.js";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { registerUser } from "../../redux/auth/operations";
+import { selectIsRefreshing } from "../../redux/auth/selectors"; // optional
+import toast from "react-hot-toast";
 
-const authSchemas = {
-  login: yup.object({
-    email: yup.string().email("Invalid email").required("Required"),
-    password: yup.string().required("Required"),
-  }),
-  register: yup.object({
-    name: yup.string().required("Required"),
-    email: yup.string().email("Invalid email").required("Required"),
-    password: yup.string().required("Required"),
-  }),
-};
+// --- Validation Schema ---
+const schema = yup.object({
+  name: yup.string().required("Name is required"),
+  email: yup.string().email("Invalid email").required("Email is required"),
+  password: yup
+    .string()
+    .min(6, "Minimum 6 characters")
+    .required("Password required"),
+  country: yup.string().required("Country is required"),
+  dialect: yup.string().required("Dialect or heritage is required"),
+  intent: yup.string().required("Select your intent"),
+  gender: yup.string().required("Select your gender"),
+  thoughts: yup.string().max(300, "Max 300 characters"),
+});
 
-const AuthForm = ({ type = "login", onSubmit }) => {
-  const schema = authSchemas[type];
+// --- Dropdown options ---
+const countries = ["Ukraine", "USA", "UK", "Canada", "France"];
+const genders = ["Male", "Female", "Non-binary", "Prefer not to say"];
+const causes = ["Palestine", "Sudan", "Yemen", "Ukraine", "Congo"];
+
+export default function AuthForm() {
   const dispatch = useDispatch();
-  const [visiblePassword, setVisiblePassword] = useState(false);
+  const isLoading = useSelector(selectIsRefreshing);
+
+  const [selectedCause, setSelectedCause] = useState(causes[0]);
 
   const {
-    register,
+    control,
     handleSubmit,
+    register,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+    reset,
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+      country: "",
+      dialect: "",
+      intent: "",
+      gender: "",
+      thoughts: "",
+    },
+  });
 
-  const handleFormSubmit = (data) => {
-    type === "login"
-      ? dispatch(loginUser({ email: data.email, password: data.password }))
-          .unwrap()
-          .then((res) => {
-            console.log("Login successful:", res);
-            onSubmit();
-          })
-          .catch((err) => console.log("Login failed:", err))
-      : type === "register"
-      ? dispatch(
-          registerUser({
-            email: data.email,
-            password: data.password,
-            displayName: data.displayName,
-          })
-        )
-          .unwrap()
-          .then((res) => {
-            console.log("Register successful:", res);
-            onSubmit();
-          })
-          .catch((err) => console.log("Register failed:", err))
-      : null;
+  const onSubmit = (data) => {
+    const payload = {
+      email: data.email,
+      password: data.password,
+      displayName: data.name,
+    };
+    dispatch(registerUser(payload))
+      .unwrap()
+      .then(() => {
+        toast.success("Account created successfully 🎉");
+        reset();
+      })
+      .catch((err) => toast.error(err));
   };
 
   return (
-    <div>
-      {type === "register" && (
-        <p className="font-normal text-base leading-[1.37] text-[rgba(18,20,23,0.8)] mb-10">
-          Thank you for your interest in our platform! In order to register, we
-          need some information. Please provide us with the following
-          information
-        </p>
-      )}
-      {type === "login" && (
-        <p className="font-normal text-base leading-[1.37] text-[rgba(18,20,23,0.8)] mb-10">
-          Welcome back! Please enter your credentials to access your account and
-          continue your search for an teacher.
-        </p>
-      )}
-      <form onSubmit={handleSubmit(handleFormSubmit)} className="">
-        <div className="w-full flex flex-col items-center gap-[18px] mb-10">
-          {type === "register" && (
-            <div className="w-full">
-              <input
-                {...register("name")}
-                placeholder="Name"
-                className="font-normal text-base leading-[1.37] text-[#121417] placeholder-[#121417] w-full max-h-[54px] border pl-[18px] py-4 rounded-xl border-solid border-[rgba(18,20,23,0.1)]"
-              />
-              {errors.name && (
-                <p className="text-red-500 text-sm">{errors.name.message}</p>
-              )}
-            </div>
-          )}
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="max-w-[1200px] w-full mx-auto  p-[50px]
+    rounded-[30px] backdrop-blur-[50px]
+    bg-[linear-gradient(135deg,rgba(196,196,196,0.12)_0%,rgba(196,196,196,0.12)_100%)]"
+    >
+      {/* 2-column grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-[30px]">
+        {/* Name */}
+        <div className="max-h-[81px]">
+          <label className="font-bold text-base leading-[1.4] block mb-2">
+            Name
+          </label>
+          <input
+            {...register("name")}
+            placeholder="Enter Your Name"
+            className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
+            font-normal text-base placeholder-white placeholder-font-inter placeholder-opacity-60 border border-solid 
+            border-[rgba(255,255,255,0.3)] focus:ring-1 focus:ring-pink-400 outline-none"
+          />
+          <p className="text-red-400 text-sm">{errors.name?.message}</p>
+        </div>
 
-          <div className="w-full">
-            <input
-              {...register("email")}
-              type="email"
-              placeholder="Email"
-              className="font-normal text-base leading-[1.37] text-[#121417] placeholder-[#121417] w-full max-h-[54px] border pl-[18px] py-4 rounded-xl border-solid border-[rgba(18,20,23,0.1)]"
-            />
-            {errors.email && (
-              <p className="text-red-500 text-sm">{errors.email.message}</p>
+        {/* Email */}
+        <div>
+          <label className="font-bold text-base leading-[1.4] block mb-2">
+            Email
+          </label>
+          <input
+            {...register("email")}
+            placeholder="Enter Your Email"
+            className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
+            font-normal text-base placeholder-white placeholder-font-inter placeholder-opacity-60 border border-solid 
+            border-[rgba(255,255,255,0.3)] focus:ring-1 focus:ring-pink-400 outline-none"
+          />
+          <p className="text-red-400 text-sm">{errors.email?.message}</p>
+        </div>
+
+        {/* Password */}
+        <div>
+          <label className="font-bold text-base leading-[1.4] block mb-2">
+            Password
+          </label>
+          <input
+            {...register("password")}
+            type="password"
+            placeholder="Enter Password"
+            className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
+            font-normal text-base placeholder-white placeholder-font-inter placeholder-opacity-60 border border-solid 
+            border-[rgba(255,255,255,0.3)] focus:ring-1 focus:ring-pink-400 outline-none"
+          />
+          <p className="text-red-400 text-sm">{errors.password?.message}</p>
+        </div>
+
+        {/* Country */}
+        <div>
+          <label className="font-bold text-base leading-[1.4] block mb-2">
+            Country
+          </label>
+          <Controller
+            name="country"
+            control={control}
+            render={({ field }) => (
+              <Listbox value={field.value} onChange={field.onChange}>
+                <div className="relative">
+                  <Listbox.Button
+                    className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
+            font-normal text-base text-opacity-60 border border-solid 
+            border-[rgba(255,255,255,0.3)] placeholder-white placeholder-font-inter placeholder-opacity-60 focus:ring-1 focus:ring-pink-400 outline-none text-left flex justify-between items-center"
+                  >
+                    <span>{field.value || "Select Your Country"}</span>
+                    <ChevronDownIcon className="w-4 h-4" />
+                  </Listbox.Button>
+                  <Listbox.Options className="absolute mt-2 w-full bg-gray-900 rounded-lg shadow-lg z-10">
+                    {countries.map((c) => (
+                      <Listbox.Option
+                        key={c}
+                        value={c}
+                        className="cursor-pointer p-2 hover:bg-pink-500/30"
+                      >
+                        {c}
+                      </Listbox.Option>
+                    ))}
+                  </Listbox.Options>
+                </div>
+              </Listbox>
             )}
-          </div>
+          />
+          <p className="text-red-400 text-sm">{errors.country?.message}</p>
+        </div>
 
-          <div className="w-full  relative">
-            <input
-              {...register("password")}
-              type={visiblePassword ? "text" : "password"}
-              placeholder="Password"
-              className="font-normal text-base leading-[1.37] text-[#121417] placeholder-[#121417] w-full max-h-[54px] border pl-[18px] py-4 rounded-xl border-solid border-[rgba(18,20,23,0.1)]"
-            />
-            <button
-              type="button"
-              onClick={() => setVisiblePassword((prev) => !prev)}
-              className="absolute w-5 h-5 right-[18px] top-[14px]"
+        {/* Dialect */}
+        <div>
+          <label className="font-bold text-base leading-[1.4] block mb-2">
+            Dialect or Heritage
+          </label>
+          <input
+            {...register("dialect")}
+            placeholder="Enter Dialect or Heritage"
+            className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
+            font-normal text-base placeholder-white placeholder-font-inter placeholder-opacity-60 border border-solid 
+            border-[rgba(255,255,255,0.3)] focus:ring-1 focus:ring-pink-400 outline-none"
+          />
+          <p className="text-red-400 text-sm">{errors.dialect?.message}</p>
+        </div>
+
+        {/* Intent
+        <div>
+          <label className="block mb-1 text-sm font-medium">Intent</label>
+          <Controller
+            name="intent"
+            control={control}
+            render={({ field }) => (
+              <Listbox value={field.value} onChange={field.onChange}>
+                <div className="relative">
+                  <Listbox.Button className="w-full bg-white/10 border border-white/20 rounded-lg p-3 text-left flex justify-between items-center">
+                    <span>{field.value || "Select Your Intent"}</span>
+                    <ChevronDownIcon className="w-4 h-4" />
+                  </Listbox.Button>
+                  <Listbox.Options className="absolute mt-2 w-full bg-gray-900 rounded-lg shadow-lg z-10">
+                    {intents.map((i) => (
+                      <Listbox.Option
+                        key={i}
+                        value={i}
+                        className="cursor-pointer p-2 hover:bg-pink-500/30"
+                      >
+                        {i}
+                      </Listbox.Option>
+                    ))}
+                  </Listbox.Options>
+                </div>
+              </Listbox>
+            )}
+          />
+          <p className="text-red-400 text-sm">{errors.intent?.message}</p>
+        </div> */}
+
+        {/* Gender */}
+        <div>
+          <label className="font-bold text-base leading-[1.4] block mb-2">
+            Gender Identity
+          </label>
+          <Controller
+            name="gender"
+            control={control}
+            render={({ field }) => (
+              <Listbox value={field.value} onChange={field.onChange}>
+                <div className="relative">
+                  <Listbox.Button
+                    className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
+            font-normal text-base text-opacity-50 border border-solid 
+            border-[rgba(255,255,255,0.3)] placeholder-white placeholder-font-inter placeholder-opacity-60 focus:ring-1 focus:ring-pink-400 outline-none text-left flex justify-between items-center"
+                  >
+                    <span>{field.value || "Select Your Gender"}</span>
+                    <ChevronDownIcon className="w-4 h-4" />
+                  </Listbox.Button>
+                  <Listbox.Options className="absolute mt-2 w-full bg-gray-900 rounded-lg shadow-lg z-10">
+                    {genders.map((g) => (
+                      <Listbox.Option
+                        key={g}
+                        value={g}
+                        className="cursor-pointer p-2 hover:bg-pink-500/30"
+                      >
+                        {g}
+                      </Listbox.Option>
+                    ))}
+                  </Listbox.Options>
+                </div>
+              </Listbox>
+            )}
+          />
+          <p className="text-red-400 text-sm">{errors.gender?.message}</p>
+        </div>
+      </div>
+
+      {/* Thoughts */}
+      <div className="mb-[30px]">
+        <label className="block mb-[2px] font-bold text-base leading-[1.4]">
+          What is Galbi to you?
+        </label>
+        <span className="block mb-4 font-normal text-sm leading-[1.4] opacity-[0.8]">
+          What features or values would you love to see on Galbi?
+        </span>
+        <textarea
+          {...register("thoughts")}
+          placeholder="Share Your Thoughts..."
+          className="w-full bg-white/10 border border-white/20 border max-w-[1100px] min-h-[109px] p-4 rounded-lg 
+          border-solid border-[rgba(255,255,255,0.3)] placeholder-opacity-60 placeholder-white focus:ring-1 focus:ring-pink-400 outline-none min-h-[100px]"
+        />
+        <p className="text-red-400 text-sm">{errors.thoughts?.message}</p>
+      </div>
+
+      {/* Brand involvement checkboxes */}
+      <div className="mb-[30px]">
+        <p className="font-roboto font-medium text-lg leading-[1.44] mb-3">
+          Optional Brand Involvement:
+        </p>
+        <div className="flex flex-col gap-2">
+          {[
+            "I’d like to be featured in future campaigns",
+            "I’m open to being a Galbi ambassador",
+            "I want to co-create with the team",
+            "Not right now",
+          ].map((label) => (
+            <label
+              key={label}
+              className="flex items-center gap-3 text-[15px] leading-[1.47] tracking-[0.02em] opacity-80"
             >
+              <input type="checkbox" className="accent-pink-500" /> {label}
+            </label>
+          ))}
+        </div>
+      </div>
+
+      {/* Causes */}
+      <div className="mb-[60px]">
+        <label className="block mb-[2px] font-bold text-base leading-[1.4]">
+          Causes You Care About
+        </label>
+        <span className="text-sm leading-[1.4] opacity-80 block mb-2">
+          show one or two example causes in the dropdown (e.g. Palestine, Sudan,
+          Yemen).
+        </span>
+        <Listbox value={selectedCause} onChange={setSelectedCause}>
+          <div className="relative">
+            <Listbox.Button className="w-full min-h-[51px] placeholder-white placeholder-font-inter placeholder-opacity-60 bg-white/10 border border-white/20 rounded-lg p-3 text-left flex justify-between items-center">
+              <span>{selectedCause}</span>
+              <ChevronDownIcon className="w-4 h-4" />
+            </Listbox.Button>
+            <Listbox.Options className="absolute mt-2 w-full bg-gray-900 rounded-lg shadow-lg z-10">
+              {causes.map((cause) => (
+                <Listbox.Option
+                  key={cause}
+                  value={cause}
+                  className="cursor-pointer p-2 hover:bg-pink-500/30"
+                >
+                  {cause}
+                </Listbox.Option>
+              ))}
+            </Listbox.Options>
+          </div>
+        </Listbox>
+      </div>
+      <div className="flex justify-center items-center">
+        <button
+          type="submit"
+          disabled={isLoading}
+          className="
+    w-[228px] h-16 
+    font-inter font-semibold text-[19px] text-center text-white
+    px-[34px] py-5 rounded-2xl
+    bg-gradient-to-b from-[#fb1555] to-[#8d1caa]
+    shadow-none
+    transition-[box-shadow,background-position,background-color] duration-700 ease-in-out
+    hover:shadow-[0_2px_20px_rgba(0,0,0,0.15)]
+    hover:from-[#ff4a7c] hover:to-[#a42fc2]
+  "
+        >
+          {isLoading ? (
+            <span className="">Saving...</span>
+          ) : (
+            <div className="flex items-center justify-center gap-[10px]">
+              <span className="">Save My Spot</span>
               <svg
-                className="inline-block w-full h-full"
-                stroke="#121417"
+                className="inline-block w-6 h-6"
+                strokeWidth="1.5"
+                stroke="#fff"
                 fill="none"
               >
-                <use href="/sprite.svg#icon-eye-off"></use>
+                <use href="/sprite.svg#icon-arrow-right"></use>
               </svg>
-            </button>
-
-            {errors.password && (
-              <p className="text-red-500 text-sm">{errors.password.message}</p>
-            )}
-          </div>
-        </div>
-        <button type="submit" className="w-full text-black py-4">
-          {type === "login" ? "Log In" : "Sign Up"}
+            </div>
+          )}
         </button>
-      </form>
-    </div>
+      </div>
+    </form>
   );
-};
-
-export default AuthForm;
+}
