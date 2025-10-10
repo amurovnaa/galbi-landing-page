@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../redux/auth/operations";
-import { selectIsRefreshing } from "../../redux/auth/selectors"; // optional
+import { selectIsRefreshing } from "../../redux/auth/selectors";
 import toast from "react-hot-toast";
 
 // --- Validation Schema ---
@@ -19,7 +19,6 @@ const schema = yup.object({
     .required("Password required"),
   country: yup.string().required("Country is required"),
   dialect: yup.string().required("Dialect or heritage is required"),
-  intent: yup.string().required("Select your intent"),
   gender: yup.string().required("Select your gender"),
   thoughts: yup.string().max(300, "Max 300 characters"),
 });
@@ -49,17 +48,25 @@ export default function AuthForm() {
       password: "",
       country: "",
       dialect: "",
-      intent: "",
       gender: "",
       thoughts: "",
+      brands: [],
+      cause: causes[0],
     },
   });
 
   const onSubmit = (data) => {
+    console.log("Form submitted:", data);
     const payload = {
       email: data.email,
       password: data.password,
       displayName: data.name,
+      country: data.country,
+      dialect: data.dialect,
+      gender: data.gender,
+      brands: data.brands,
+      cause: data.cause,
+      thoughts: data.thoughts,
     };
     dispatch(registerUser(payload))
       .unwrap()
@@ -67,7 +74,9 @@ export default function AuthForm() {
         toast.success("Account created successfully 🎉");
         reset();
       })
-      .catch((err) => toast.error(err));
+      .catch((err) => {
+        toast.error(err);
+      });
   };
 
   return (
@@ -77,9 +86,7 @@ export default function AuthForm() {
     rounded-[30px] backdrop-blur-[50px]
     bg-[linear-gradient(135deg,rgba(196,196,196,0.12)_0%,rgba(196,196,196,0.12)_100%)]"
     >
-      {/* 2-column grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-[30px]">
-        {/* Name */}
         <div className="max-h-[81px]">
           <label className="font-bold text-base leading-[1.4] block mb-2">
             Name
@@ -177,37 +184,6 @@ export default function AuthForm() {
           <p className="text-red-400 text-sm">{errors.dialect?.message}</p>
         </div>
 
-        {/* Intent
-        <div>
-          <label className="block mb-1 text-sm font-medium">Intent</label>
-          <Controller
-            name="intent"
-            control={control}
-            render={({ field }) => (
-              <Listbox value={field.value} onChange={field.onChange}>
-                <div className="relative">
-                  <Listbox.Button className="w-full bg-white/10 border border-white/20 rounded-lg p-3 text-left flex justify-between items-center">
-                    <span>{field.value || "Select Your Intent"}</span>
-                    <ChevronDownIcon className="w-4 h-4" />
-                  </Listbox.Button>
-                  <Listbox.Options className="absolute mt-2 w-full bg-gray-900 rounded-lg shadow-lg z-10">
-                    {intents.map((i) => (
-                      <Listbox.Option
-                        key={i}
-                        value={i}
-                        className="cursor-pointer p-2 hover:bg-pink-500/30"
-                      >
-                        {i}
-                      </Listbox.Option>
-                    ))}
-                  </Listbox.Options>
-                </div>
-              </Listbox>
-            )}
-          />
-          <p className="text-red-400 text-sm">{errors.intent?.message}</p>
-        </div> */}
-
         {/* Gender */}
         <div>
           <label className="font-bold text-base leading-[1.4] block mb-2">
@@ -279,7 +255,13 @@ export default function AuthForm() {
               key={label}
               className="flex items-center gap-3 text-[15px] leading-[1.47] tracking-[0.02em] opacity-80"
             >
-              <input type="checkbox" className="accent-pink-500" /> {label}
+              <input
+                type="checkbox"
+                className="accent-pink-500"
+                value={label}
+                {...register("brands")}
+              />{" "}
+              {label}
             </label>
           ))}
         </div>
@@ -294,25 +276,31 @@ export default function AuthForm() {
           show one or two example causes in the dropdown (e.g. Palestine, Sudan,
           Yemen).
         </span>
-        <Listbox value={selectedCause} onChange={setSelectedCause}>
-          <div className="relative">
-            <Listbox.Button className="w-full min-h-[51px] placeholder-white placeholder-font-inter placeholder-opacity-60 bg-white/10 border border-white/20 rounded-lg p-3 text-left flex justify-between items-center">
-              <span>{selectedCause}</span>
-              <ChevronDownIcon className="w-4 h-4" />
-            </Listbox.Button>
-            <Listbox.Options className="absolute mt-2 w-full bg-gray-900 rounded-lg shadow-lg z-10">
-              {causes.map((cause) => (
-                <Listbox.Option
-                  key={cause}
-                  value={cause}
-                  className="cursor-pointer p-2 hover:bg-pink-500/30"
-                >
-                  {cause}
-                </Listbox.Option>
-              ))}
-            </Listbox.Options>
-          </div>
-        </Listbox>
+        <Controller
+          name="cause"
+          control={control}
+          render={({ field }) => (
+            <Listbox value={field.value} onChange={field.onChange}>
+              <div className="relative">
+                <Listbox.Button className="w-full min-h-[51px] placeholder-white placeholder-font-inter placeholder-opacity-60 bg-white/10 border border-white/20 rounded-lg p-3 text-left flex justify-between items-center">
+                  <span>{field.value}</span>
+                  <ChevronDownIcon className="w-4 h-4" />
+                </Listbox.Button>
+                <Listbox.Options className="absolute mt-2 w-full bg-gray-900 rounded-lg shadow-lg z-10">
+                  {causes.map((cause) => (
+                    <Listbox.Option
+                      key={cause}
+                      value={cause}
+                      className="cursor-pointer p-2 hover:bg-pink-500/30"
+                    >
+                      {cause}
+                    </Listbox.Option>
+                  ))}
+                </Listbox.Options>
+              </div>
+            </Listbox>
+          )}
+        />
       </div>
       <div className="flex justify-center items-center">
         <button
@@ -321,7 +309,7 @@ export default function AuthForm() {
           className="
     w-[228px] h-16 
     font-inter font-semibold text-[19px] text-center text-white
-    px-[34px] py-5 rounded-2xl
+    px-2 py-2 rounded-2xl
     bg-gradient-to-b from-[#fb1555] to-[#8d1caa]
     shadow-none
     transition-[box-shadow,background-position,background-color] duration-700 ease-in-out

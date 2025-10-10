@@ -46,7 +46,14 @@ export const loginUser = createAsyncThunk(
         email,
         password
       );
-      localStorage.setItem("profile", JSON.stringify(userCredential.user));
+      localStorage.setItem(
+        "profile",
+        JSON.stringify({
+          uid: userCredential.user.uid,
+          email: userCredential.user.email,
+          displayName: userCredential.user.displayName,
+        })
+      );
       toast.success("Login successful! 👋");
       return {
         uid: userCredential.user.uid,

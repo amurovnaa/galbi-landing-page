@@ -28,6 +28,7 @@ const authSlice = createSlice({
         state.user = action.payload;
         state.isLoggedIn = true;
         state.error = null;
+        localStorage.setItem("profile", JSON.stringify(action.payload));
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.error = action.payload;
@@ -50,6 +51,7 @@ const authSlice = createSlice({
         state.user = { email: null, displayName: null, uid: null };
         state.isLoggedIn = false;
         state.error = null;
+        localStorage.removeItem("profile");
       })
       // Refresh user
       .addCase(getCurrentUser.pending, (state) => {
