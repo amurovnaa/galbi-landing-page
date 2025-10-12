@@ -3,8 +3,8 @@ import Container from "../Container/Container.jsx";
 
 const CommunitySection = () => {
   return (
-    <section className="pt-[60px] pb-[60px]">
-      <Container className="relative xl:px-[229px] flex items-center justify-center overflow-visible">
+    <section className="pt-[60px] pb-[60px] rtl" id="impact">
+      <Container className="relative xl:px-[229px] flex items-center justify-center overflow-visible ">
         <div className="relative w-full h-[700px] flex items-center justify-center">
           <img
             src={communityBg}

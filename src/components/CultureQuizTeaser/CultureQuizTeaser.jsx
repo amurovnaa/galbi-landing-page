@@ -90,15 +90,11 @@ export default function CultureQuizTeaser() {
     setSubmitted(true);
   };
 
-  const handleRetry = () => {
-    setCountry(getRandomCountry(QUIZ_DATA));
-    setAnswers({});
-    setScore(null);
-    setSubmitted(false);
-  };
-
   return (
-    <section className="py-16 px-4 bg-gradient-to-b from-pink-50 via-white to-pink-100 flex justify-center">
+    <section
+      className="py-16 px-4 bg-gradient-to-b from-pink-50 via-white to-pink-100 flex justify-center rtl"
+      id="vibe-check"
+    >
       <Container className="xl:px-[240px] flex flex-col items-center justify-center">
         <div className="text-center mb-[100px]">
           <h2 className="font-lucida font-semibold text-[50px] text-center text-black mb-6">

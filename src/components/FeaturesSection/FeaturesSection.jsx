@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { motion, useAnimation, useInView } from "framer-motion";
 import feature1 from "../../assets/images/feature-1.webp";
 import feature2 from "../../assets/images/feature-2.webp";
 import feature3 from "../../assets/images/feature-3.webp";
@@ -39,25 +41,61 @@ const features = [
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.2 } },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
+
 const FeaturesSection = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const controls = useAnimation();
+
+  if (inView) controls.start("visible");
+
   return (
-    <section className="text-center pt-[120px] pb-[120px]">
+    <section
+      className="text-center pt-[120px] pb-[120px] rtl"
+      id="features"
+      ref={ref}
+    >
       <Container className="xl:px-[240px] flex flex-col items-center justify-center">
-        <h2 className="font-lucida font-semibold text-[50px] text-center text-black mb-6">
+        <motion.h2
+          className="font-lucida font-semibold text-[50px] text-center text-black mb-6"
+          variants={fadeUp}
+          initial="hidden"
+          animate={controls}
+        >
           Why Galbi Matters
-        </h2>
-        <p className="font-normal text-xl leading-normal text-center text-black opacity-90 mb-[100px]">
+        </motion.h2>
+
+        <motion.p
+          className="font-normal text-xl leading-normal text-center text-black opacity-90 mb-[100px]"
+          variants={fadeUp}
+          initial="hidden"
+          animate={controls}
+        >
           We're building more than a dating app we're creating a
           <br />
           space where cultural identity is celebrated.
-        </p>
+        </motion.p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-[60px]">
+        <motion.ul
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-[60px]"
+          variants={containerVariants}
+          initial="hidden"
+          animate={controls}
+        >
           {features.map((f, idx) => (
-            <div
+            <motion.li
               key={idx}
-              className="bg-white max-w-[453px] min-h-[269px] shadow-[0_1px_15px_0_rgba(0,0,0,0.05)] p-[30px] pr-[38px] rounded-[20px]
-                         hover:shadow-md transition-shadow duration-300"
+              className="bg-white max-w-[453px] min-h-[269px] shadow-[0_1px_15px_0_rgba(0,0,0,0.05)] p-[30px] pr-[38px] rounded-[20px] hover:shadow-md transition-shadow duration-300"
+              variants={fadeUp}
             >
               <div className="mb-[41px] rounded-[140px]">
                 <img src={f.icon} alt={f.title} className="w-[70px] h-[70px]" />
@@ -68,21 +106,24 @@ const FeaturesSection = () => {
               <p className="font-normal text-xl leading-[1.4] text-black opacity-75 text-left">
                 {f.desc}
               </p>
-            </div>
+            </motion.li>
           ))}
-        </div>
+        </motion.ul>
 
-        <button
+        <motion.button
           className="
-    w-[278px] h-16 flex items-center justify-center gap-[10px]
-    font-inter font-semibold text-[19px] text-center text-white
-    px-[34px] py-5 rounded-2xl
-    bg-gradient-to-b from-[#fb1555] to-[#8d1caa]
-    shadow-none
-    transition-[box-shadow,background-position,background-color] duration-700 ease-in-out
-    hover:shadow-[0_2px_20px_rgba(0,0,0,0.15)]
-    hover:from-[#ff4a7c] hover:to-[#a42fc2]
-  "
+            w-[278px] h-16 flex items-center justify-center gap-[10px]
+            font-inter font-semibold text-[19px] text-center text-white
+            px-[34px] py-5 rounded-2xl
+            bg-gradient-to-b from-[#fb1555] to-[#8d1caa]
+            shadow-none
+            transition-[box-shadow,background-position,background-color] duration-700 ease-in-out
+            hover:shadow-[0_2px_20px_rgba(0,0,0,0.15)]
+            hover:from-[#ff4a7c] hover:to-[#a42fc2]
+          "
+          variants={fadeUp}
+          initial="hidden"
+          animate={controls}
         >
           <span className="">Join the Movement</span>
           <svg
@@ -93,7 +134,7 @@ const FeaturesSection = () => {
           >
             <use href="/sprite.svg#icon-arrow-right"></use>
           </svg>
-        </button>
+        </motion.button>
       </Container>
     </section>
   );

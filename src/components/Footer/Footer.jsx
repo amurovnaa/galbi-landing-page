@@ -7,6 +7,7 @@ const Footer = () => {
     <section
       className="relative bg-cover bg-right bg-no-repeat flex justify-center"
       style={{ backgroundImage: `url(${footerBgImg})` }}
+      id="footer"
     >
       <Container className="relative z-10 xxl:px-[240px] flex justify-center pt-[100px] pb-[50px]">
         <div className="flex flex-col gap-[100px] max-w-[900px] items-center">
