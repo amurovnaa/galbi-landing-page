@@ -1,9 +1,9 @@
-import feature1 from "../../assets/images/feature-1.png";
-import feature2 from "../../assets/images/feature-2.png";
-import feature3 from "../../assets/images/feature-3.png";
-import feature4 from "../../assets/images/feature-4.png";
-import feature5 from "../../assets/images/feature-5.png";
-import feature6 from "../../assets/images/feature-6.png";
+import feature1 from "../../assets/images/feature-1.webp";
+import feature2 from "../../assets/images/feature-2.webp";
+import feature3 from "../../assets/images/feature-3.webp";
+import feature4 from "../../assets/images/feature-4.webp";
+import feature5 from "../../assets/images/feature-5.webp";
+import feature6 from "../../assets/images/feature-6.webp";
 import Container from "../Container/Container.jsx";
 
 const features = [

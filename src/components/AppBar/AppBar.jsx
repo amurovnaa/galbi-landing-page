@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CiMenuFries } from "react-icons/ci";
 import { IoMdClose } from "react-icons/io";
-import galbiLogo from "../../assets/images/galbi-logo.png";
+import galbiLogo from "../../assets/images/galbi-logo.webp";
 import AuthNav from "../AuthNav/AuthNav.jsx";
 import Navigation from "../Navigation/Navigation.jsx";
 
@@ -11,12 +11,10 @@ const AppBar = () => {
   return (
     <header className="absolute top-0 left-0 w-full z-50 bg-transparent">
       <div className="max-w-[1920px] mx-auto flex items-center justify-between px-6 py-[25px] md:px-[50px] relative">
-        {/* Logo */}
         <a href="/">
           <img className="w-[52px] h-[50px]" src={galbiLogo} alt="Galbi Logo" />
         </a>
 
-        {/* Desktop navigation */}
         <div className="hidden lg:flex items-center justify-center gap-[110px]">
           <Navigation />
           <AuthNav />

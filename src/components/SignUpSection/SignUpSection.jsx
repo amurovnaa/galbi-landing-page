@@ -1,6 +1,6 @@
 import AuthForm from "../AuthForm/AuthForm.jsx";
 import Container from "../Container/Container.jsx";
-import signUpBg from "../../assets/images/sign-up-bg.png";
+import signUpBg from "../../assets/images/sign-up-bg.webp";
 
 const SignUpSection = () => {
   return (

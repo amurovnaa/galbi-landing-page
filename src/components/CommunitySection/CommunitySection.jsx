@@ -1,4 +1,4 @@
-import communityBg from "../../assets/images/communitySec-bg.png";
+import communityBg from "../../assets/images/communitySec-bg.webp";
 import Container from "../Container/Container.jsx";
 
 const CommunitySection = () => {

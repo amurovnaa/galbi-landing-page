@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import bg1 from "../../assets/images/hero-bg1.png";
-import bg2 from "../../assets/images/hero-bg2.png";
-import bg3 from "../../assets/images/hero-bg3.png";
-import bg4 from "../../assets/images/hero-bg4.png";
-import bg5 from "../../assets/images/hero-bg5.png";
-import bg6 from "../../assets/images/hero-bg6.png";
-import card1 from "../../assets/images/hero-card-1.png";
-import card2 from "../../assets/images/hero-card-2.png";
-import card3 from "../../assets/images/hero-card-3.png";
+import bg1 from "../../assets/images/hero-bg1.webp";
+import bg2 from "../../assets/images/hero-bg2.webp";
+import bg3 from "../../assets/images/hero-bg3.webp";
+import bg4 from "../../assets/images/hero-bg4.webp";
+import bg5 from "../../assets/images/hero-bg5.webp";
+import bg6 from "../../assets/images/hero-bg6.webp";
+import card1 from "../../assets/images/hero-card-1.webp";
+import card2 from "../../assets/images/hero-card-2.webp";
+import card3 from "../../assets/images/hero-card-3.webp";
 
 import AppBar from "../AppBar/AppBar.jsx";
 import { AnimatePresence, motion } from "framer-motion";

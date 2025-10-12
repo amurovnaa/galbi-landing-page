@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { FaMedal } from "react-icons/fa";
 import Container from "../Container/Container.jsx";
-import palestineFg from "../../assets/images/palestine-flag.png";
-import jordanFg from "../../assets/images/jordan-flag.jpg";
+import palestineFg from "../../assets/images/palestine-flag.webp";
+import jordanFg from "../../assets/images/jordan-flag.webp";
 import egyptFg from "../../assets/images/egypt-flag.webp";
 
 const QUIZ_DATA = [
   {
     country: "Palestinian Pride",
     flagEmoji: "🇵🇸",
-    badgeIcon: "/badges/palestine.png",
+    badgeIcon: "/badges/palestine.webp",
     questions: [
       {
         q: "Which city is famous for its knafeh?",
@@ -36,7 +36,7 @@ const QUIZ_DATA = [
   {
     country: "Sudanese Soul",
     flagEmoji: "🇸🇩",
-    badgeIcon: "/badges/sudan.png",
+    badgeIcon: "/badges/sudan.webp",
     questions: [
       {
         q: "During 'Jertig' weddings, which color is worn to protect against the evil eye?",

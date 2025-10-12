@@ -1,7 +1,7 @@
-import galbiLogo from "../../assets/images/galbi-logo.png";
-import footerBgImg from "../../assets/images/footer-bg.png";
+import galbiLogo from "../../assets/images/galbi-logo.webp";
+import footerBgImg from "../../assets/images/footer-bg.webp";
 import Container from "../Container/Container.jsx";
-import sphere from "../../assets/images/sphere-bg.png";
+
 const Footer = () => {
   return (
     <section
