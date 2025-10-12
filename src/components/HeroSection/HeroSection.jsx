@@ -54,7 +54,7 @@ const HeroSection = () => {
 
       <Container className="relative z-10 mt-[232px] mb-[130px] xxl:px-[405px] flex flex-col justify-center items-center gap-[100px]">
         <div className="max-w-[856px] flex flex-col items-center justify-center">
-          <h1 className="font-lucida font-semibold text-[70px] leading-[1.14] text-center text-white mb-6">
+          <h1 className="font-lucida font-semibold text-[50px]  leading-[1.14] text-center text-white mb-6 md:text-[70px]">
             Your background is just the beginning
           </h1>
           <p className="font-normal text-[22px] leading-[1.64] text-center mb-[30px] opacity-90">
@@ -66,14 +66,14 @@ const HeroSection = () => {
           </p>
           <button
             className="
-    w-[358px] h-16 flex items-center- justify-center gap-[10px]
+    max-w-[358px] min-h-16 flex items-center justify-center gap-[10px]
     font-inter font-semibold text-[19px] text-center text-white
-    px-[34px] py-5 rounded-2xl
+    px-4 py-2 rounded-2xl
     bg-gradient-to-b from-[#fb1555] to-[#8d1caa]
     shadow-none
     transition-[box-shadow,background-position,background-color] duration-700 ease-in-out
     hover:shadow-[0_2px_20px_rgba(0,0,0,0.15)]
-    hover:from-[#ff4a7c] hover:to-[#a42fc2]
+    hover:from-[#ff4a7c] hover:to-[#a42fc2] md:w-[358px] md:h-16 md:text-[19px]
   "
           >
             <span className="">Join the Founding Members</span>

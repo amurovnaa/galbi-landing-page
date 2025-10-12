@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-import { TbHeartQuestion } from "react-icons/tb";
-import { FaMedal, FaRedoAlt } from "react-icons/fa";
+import { useState } from "react";
+import { FaMedal } from "react-icons/fa";
 import Container from "../Container/Container.jsx";
+import palestineFg from "../../assets/images/palestine-flag.png";
+import jordanFg from "../../assets/images/jordan-flag.jpg";
+import egyptFg from "../../assets/images/egypt-flag.webp";
 
 const QUIZ_DATA = [
   {
@@ -102,19 +104,47 @@ export default function CultureQuizTeaser() {
           <h2 className="font-lucida font-semibold text-[50px] text-center text-black mb-6">
             Earn Your Heritage Badge
           </h2>
-          <p className="font-normal text-xl leading-normal text-center text-black opacity-90">
-            Every culture has its own. Take the quiz, claim your badge.
-          </p>
+          <div className="flex gap-2 items-center justify-center mb-2">
+            <p className="font-normal text-xl leading-normal text-center text-black opacity-90">
+              Every culture has its own
+            </p>
+            <ul className="flex gap-1 items-center">
+              <li className="w-5 h-5">
+                <img
+                  src={palestineFg}
+                  className="w-full h-full"
+                  alt="Palestine Flag"
+                />
+              </li>
+
+              <li className="w-6 h-6">
+                <img src={egyptFg} className="w-full h-full" alt="Egypt Flag" />
+              </li>
+              <li className="w-5 h-5">
+                <img
+                  src={jordanFg}
+                  className="w-full h-full"
+                  alt="Jordan Flag"
+                />
+              </li>
+            </ul>
+          </div>
+          <span className="font-normal text-xl leading-normal text-center text-black opacity-90">
+            Take the quiz, claim your badge.
+          </span>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
           {country.questions.map((q, i) => (
             <div
               key={i}
-              className="bg-white/80 backdrop-blur-md border border-pink-100 shadow-md rounded-2xl p-6 flex flex-col h-full"
+              className="bg-white max-w-[453px] min-h-[269px] shadow-[0_1px_15px_0_rgba(0,0,0,0.05)] p-[30px] pr-[38px] rounded-[20px]
+                         hover:shadow-md transition-shadow duration-300"
             >
               <div className="flex items-center gap-2 mb-4">
-                <p className="font-medium text-gray-800">{q.q}</p>
+                <p className="font-medium text-[20px] italic text-black mb-3 text-left">
+                  {q.q}
+                </p>
               </div>
               <ul className="space-y-2 flex-1">
                 {q.choices.map((choice, ci) => {
@@ -142,7 +172,9 @@ export default function CultureQuizTeaser() {
                         disabled={submitted}
                         className="accent-pink-500 cursor-pointer"
                       />
-                      <span className="text-sm text-gray-700">{choice}</span>
+                      <span className="font-normal text-l leading-[1.4] text-black opacity-90 text-lef">
+                        {choice}
+                      </span>
                       {isCorrect && (
                         <span className="text-green-500 ml-auto">✅</span>
                       )}
@@ -164,7 +196,7 @@ export default function CultureQuizTeaser() {
               disabled={Object.keys(answers).length < country.questions.length}
               className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
                 Object.keys(answers).length < country.questions.length
-                  ? "bg-gray-300 text-gray-600 cursor-not-allowed"
+                  ? "bg-gray-100 text-gray-600 cursor-not-allowed"
                   : "bg-gradient-to-r from-pink-600 to-rose-500 text-white hover:shadow-lg"
               }`}
             >
