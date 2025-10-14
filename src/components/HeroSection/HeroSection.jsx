@@ -131,32 +131,6 @@ const HeroSection = () => {
             </svg>
           </motion.button>
         </motion.div>
-
-        <ul className="flex flex-wrap justify-center gap-5">
-          <li className="flex justify-center items-start w-full max-w-[310px] max-h-[365px] p-[30px] rounded-2xl border border-solid border-[rgba(255,255,255,0.5)] bg-white/20 backdrop-blur-sm">
-            <img
-              src={card1}
-              alt="Happy Galbi People"
-              className="w-full h-auto max-h-[305px] object-contain"
-            />
-          </li>
-
-          <li className="flex justify-center items-start w-full max-w-[450px] max-h-[365px] p-[30px] rounded-2xl border border-solid border-[rgba(255,255,255,0.5)] bg-white/20 backdrop-blur-sm">
-            <img
-              src={card2}
-              alt="Happy Galbi People"
-              className="w-full h-auto max-h-[305px] object-contain"
-            />
-          </li>
-
-          <li className="flex justify-center items-start w-full max-w-[310px] max-h-[365px] p-[30px] rounded-2xl border border-solid border-[rgba(255,255,255,0.5)] bg-white/20 backdrop-blur-sm">
-            <img
-              src={card3}
-              alt="Happy Galbi People"
-              className="w-full h-auto max-h-[305px] object-contain"
-            />
-          </li>
-        </ul>
       </Container>
     </section>
   );
