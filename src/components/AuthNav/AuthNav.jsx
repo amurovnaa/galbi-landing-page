@@ -1,6 +1,6 @@
 const AuthNav = () => {
   return (
-    <div>
+    <button>
       <a
         href="#sign-up"
         className="flex justify-center items-center max-w-[161px] max-h-[62px] 
@@ -15,7 +15,7 @@ const AuthNav = () => {
       >
         Join Now
       </a>
-    </div>
+    </button>
   );
 };
 export default AuthNav;

@@ -29,7 +29,7 @@ const SignUpSection = () => {
       id="sign-up"
       ref={ref}
     >
-      <Container className="xl:px-[360px] py-[120px] flex flex-col items-center justify-center gap-[100px]">
+      <Container className=" py-[120px] flex flex-col items-center justify-center gap-[100px] xxl:px-[360px]">
         <motion.div
           initial="hidden"
           animate={controls}

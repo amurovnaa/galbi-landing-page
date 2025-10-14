@@ -4,9 +4,21 @@ import { IoMdClose } from "react-icons/io";
 import galbiLogo from "../../assets/images/galbi-logo.webp";
 import AuthNav from "../AuthNav/AuthNav.jsx";
 import Navigation from "../Navigation/Navigation.jsx";
+import { selectIsLoggedIn } from "../../redux/auth/selectors.js";
+import UserMenu from "../UserMenu/UserMenu.jsx";
+import { useSelector } from "react-redux";
 
 const AppBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
+  const closeMenu = () => setMenuOpen(false);
+
+  const handleLinkClick = (event) => {
+    const target = event.target.closest("a");
+    if (target) closeMenu();
+  };
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <header className="absolute top-0 left-0 w-full z-50 bg-transparent">
@@ -17,11 +29,11 @@ const AppBar = () => {
 
         <div className="hidden lg:flex items-center justify-center gap-[110px]">
           <Navigation />
-          <AuthNav />
+          {isLoggedIn ? <UserMenu /> : <AuthNav />}
         </div>
 
         <button
-          onClick={() => setMenuOpen(!menuOpen)}
+          onClick={toggleMenu}
           className="lg:hidden text-3xl focus:outline-none text-white relative z-[60]"
         >
           {menuOpen ? <IoMdClose /> : <CiMenuFries />}
@@ -33,9 +45,13 @@ const AppBar = () => {
     ${menuOpen ? "translate-x-0" : "translate-x-full"} 
     backdrop-blur-lg bg-[rgba(10,10,10,0.7)] shadow-[0_0_20px_rgba(0,0,0,0.7)]`}
       >
-        <div className="flex flex-col items-center justify-center h-full gap-10 text-lg tracking-wide">
+        <div
+          className="flex flex-col items-center justify-center h-full gap-10 text-lg 
+        tracking-wide"
+          onClick={handleLinkClick}
+        >
           <Navigation />
-          <AuthNav />
+          {isLoggedIn ? <UserMenu /> : <AuthNav />}
         </div>
       </div>
     </header>

@@ -8,18 +8,17 @@ import egyptFg from "../../assets/images/egypt-flag.webp";
 const QUIZ_DATA = [
   {
     country: "Palestinian Pride",
-    flagEmoji: "🇵🇸",
-    badgeIcon: "/badges/palestine.webp",
+    badgeIcon: palestineFg,
     questions: [
       {
         q: "Which city is famous for its knafeh?",
         choices: ["Bethlehem", "Nablus", "Jericho", "Ramallah"],
-        a: "Nablus",
+        answer: "Nablus",
       },
       {
         q: "Which spice blend is made with thyme, toasted sesame seeds, and sumac?",
         choices: ["Baharat", "Za'atar", "Dukkah", "Sumac"],
-        a: "Za'atar",
+        answer: "Za'atar",
       },
       {
         q: "“His onion is burnt!” means what?",
@@ -29,19 +28,18 @@ const QUIZ_DATA = [
           "He’s impatient or in a rush",
           "He smells bad",
         ],
-        a: "He’s impatient or in a rush",
+        answer: "He’s impatient or in a rush",
       },
     ],
   },
   {
     country: "Sudanese Soul",
-    flagEmoji: "🇸🇩",
     badgeIcon: "/badges/sudan.webp",
     questions: [
       {
         q: "During 'Jertig' weddings, which color is worn to protect against the evil eye?",
         choices: ["Blue", "Red", "Yellow", "Green"],
-        a: "Red",
+        answer: "Red",
       },
       {
         q: "At a traditional Sudanese wedding, the groom traditionally holds:",
@@ -51,7 +49,7 @@ const QUIZ_DATA = [
           "Instrument",
           "Gift box",
         ],
-        a: "A sword and black beads",
+        answer: "A sword and black beads",
       },
       {
         q: "When invited to a Sudanese home for dinner, you’re most likely eating from:",
@@ -61,7 +59,7 @@ const QUIZ_DATA = [
           "Picnic basket",
           "Fancy dining table",
         ],
-        a: "A shared tray (Seniyya)",
+        answer: "A shared tray (Seniyya)",
       },
     ],
   },
@@ -84,7 +82,7 @@ export default function CultureQuizTeaser() {
   const handleSubmit = () => {
     let correct = 0;
     country.questions.forEach((q, i) => {
-      if (answers[i] === q.a) correct++;
+      if (answers[i] === q.answer) correct++;
     });
     setScore(correct);
     setSubmitted(true);
@@ -144,9 +142,9 @@ export default function CultureQuizTeaser() {
               </div>
               <ul className="space-y-2 flex-1">
                 {q.choices.map((choice, ci) => {
-                  const isCorrect = submitted && choice === q.a;
+                  const isCorrect = submitted && choice === q.answer;
                   const isWrong =
-                    submitted && answers[i] === choice && choice !== q.a;
+                    submitted && answers[i] === choice && choice !== q.answer;
 
                   return (
                     <li
@@ -172,10 +170,10 @@ export default function CultureQuizTeaser() {
                         {choice}
                       </span>
                       {isCorrect && (
-                        <span className="text-green-500 ml-auto">✅</span>
+                        <span className="text-green-500 ml-auto"></span>
                       )}
                       {isWrong && (
-                        <span className="text-red-500 ml-auto">❌</span>
+                        <span className="text-red-500 ml-auto"></span>
                       )}
                     </li>
                   );
@@ -185,7 +183,7 @@ export default function CultureQuizTeaser() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col md:flex-row justify-center items-center gap-16">
+        <div className="mt-12 flex flex-col justify-center items-center gap-16 ">
           {!submitted ? (
             <button
               onClick={handleSubmit}
@@ -199,7 +197,7 @@ export default function CultureQuizTeaser() {
               Submit Answers
             </button>
           ) : (
-            <div className="text-center flex gap-8">
+            <div className="text-center flex flex-col gap-8 md:flex-row">
               <div>
                 <p className="text-lg font-semibold text-gray-800 mb-2">
                   You got {score} / {country.questions.length} correct!

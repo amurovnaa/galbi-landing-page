@@ -1,10 +1,24 @@
+import { motion } from "framer-motion";
 import communityBg from "../../assets/images/communitySec-bg.webp";
 import Container from "../Container/Container.jsx";
+
+const textVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (delay = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      delay,
+      ease: "easeOut",
+    },
+  }),
+};
 
 const CommunitySection = () => {
   return (
     <section className="pt-[60px] pb-[60px] rtl" id="impact">
-      <Container className="relative xl:px-[229px] flex items-center justify-center overflow-visible ">
+      <Container className="relative xl:px-[229px] flex items-center justify-center overflow-visible">
         <div className="relative w-full h-[700px] flex items-center justify-center">
           <img
             src={communityBg}
@@ -13,10 +27,25 @@ const CommunitySection = () => {
           />
 
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6 z-10 md:px-12">
-            <h2 className="font-lucida font-semibold text-[30px] md:text-[65px] leading-tight mb-[50px]">
+            <motion.h2
+              variants={textVariants}
+              initial="hidden"
+              whileInView="visible"
+              custom={0.2}
+              viewport={{ once: true, amount: 0.3 }}
+              className="font-lucida font-semibold text-[30px] md:text-[65px] leading-tight mb-[50px]"
+            >
               Built by us. For us. For good.
-            </h2>
-            <p className="max-w-[800px] font-medium text-2xl leading-[1.58] text-center">
+            </motion.h2>
+
+            <motion.p
+              variants={textVariants}
+              initial="hidden"
+              whileInView="visible"
+              custom={0.5}
+              viewport={{ once: true, amount: 0.3 }}
+              className="max-w-[800px] font-medium text-2xl leading-[1.58] text-center"
+            >
               Galbi isn’t just an app. It’s a choice to build love with meaning.
               <br />
               10% of every subscription goes to causes you care about Gaza,
@@ -27,7 +56,7 @@ const CommunitySection = () => {
               Because your love has weight.
               <br />
               And your heart was made to give.
-            </p>
+            </motion.p>
           </div>
         </div>
       </Container>

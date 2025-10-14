@@ -24,8 +24,36 @@ const schema = yup.object({
 });
 
 // --- Dropdown options ---
-const countries = ["Ukraine", "USA", "UK", "Canada", "France"];
-const genders = ["Male", "Female", "Non-binary", "Prefer not to say"];
+const countries = [
+  "Palestine",
+  "Jordan",
+  "Lebanon",
+  "Syria",
+  "Egypt",
+  "Morocco",
+  "Algeria",
+  "Tunisia",
+  "Sudan",
+  "Saudi Arabia",
+  "UAE",
+  "Kuwait",
+  "Qatar",
+  "Bahrain",
+  "Oman",
+  "Iraq",
+  "Pakistan",
+  "Bangladesh",
+  "India (Muslim)",
+  "Somalia",
+  "Albania / Kosovo",
+  "Turkey",
+  "Ukraine",
+  "USA",
+  "UK",
+  "Canada",
+  "France",
+];
+const genders = ["Male", "Female", "Prefer not to say"];
 const causes = ["Palestine", "Sudan", "Yemen", "Ukraine", "Congo"];
 
 export default function AuthForm() {
@@ -71,7 +99,7 @@ export default function AuthForm() {
     dispatch(registerUser(payload))
       .unwrap()
       .then(() => {
-        toast.success("Account created successfully 🎉");
+        toast.success("Account created successfully!");
         reset();
       })
       .catch((err) => {
@@ -151,7 +179,7 @@ export default function AuthForm() {
                     <span>{field.value || "Select Your Country"}</span>
                     <ChevronDownIcon className="w-4 h-4" />
                   </Listbox.Button>
-                  <Listbox.Options className="absolute mt-2 w-full bg-gray-900 rounded-lg shadow-lg z-10">
+                  <Listbox.Options className="absolute mt-2 w-full max-h-60 overflow-y-auto bg-gray-900 rounded-lg shadow-lg z-10">
                     {countries.map((c) => (
                       <Listbox.Option
                         key={c}
@@ -203,7 +231,7 @@ export default function AuthForm() {
                     <span>{field.value || "Select Your Gender"}</span>
                     <ChevronDownIcon className="w-4 h-4" />
                   </Listbox.Button>
-                  <Listbox.Options className="absolute mt-2 w-full bg-gray-900 rounded-lg shadow-lg z-10">
+                  <Listbox.Options className="absolute mt-2 w-full max-h-60 overflow-y-auto bg-gray-900 rounded-lg shadow-lg z-10">
                     {genders.map((g) => (
                       <Listbox.Option
                         key={g}
@@ -253,14 +281,14 @@ export default function AuthForm() {
           ].map((label) => (
             <label
               key={label}
-              className="flex items-center gap-3 text-[15px] leading-[1.47] tracking-[0.02em] opacity-80"
+              className="font-roboto flex items-center gap-3 text-[15px] leading-[1.47] tracking-[0.02em] opacity-80"
             >
               <input
                 type="checkbox"
                 className="accent-pink-500"
                 value={label}
                 {...register("brands")}
-              />{" "}
+              />
               {label}
             </label>
           ))}
@@ -283,10 +311,10 @@ export default function AuthForm() {
             <Listbox value={field.value} onChange={field.onChange}>
               <div className="relative">
                 <Listbox.Button className="w-full min-h-[51px] placeholder-white placeholder-font-inter placeholder-opacity-60 bg-white/10 border border-white/20 rounded-lg p-3 text-left flex justify-between items-center">
-                  <span>{field.value}</span>
+                  <span className="font-normal">{field.value}</span>
                   <ChevronDownIcon className="w-4 h-4" />
                 </Listbox.Button>
-                <Listbox.Options className="absolute mt-2 w-full bg-gray-900 rounded-lg shadow-lg z-10">
+                <Listbox.Options className=" absolute mt-2 w-full max-h-60 overflow-y-auto bg-gray-900 rounded-lg shadow-lg z-10">
                   {causes.map((cause) => (
                     <Listbox.Option
                       key={cause}
