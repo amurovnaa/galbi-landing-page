@@ -29,7 +29,7 @@ const MockupSection = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
     >
-      <Container className="flex flex-col items-center justify-evenly lg:flex-row gap-12">
+      <Container className="flex flex-col items-center justify-evenly lg:flex-row">
         {/* Text Column */}
         <motion.div
           variants={textVariant}
