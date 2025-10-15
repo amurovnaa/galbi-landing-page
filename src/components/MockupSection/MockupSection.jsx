@@ -33,7 +33,7 @@ const MockupSection = () => {
         {/* Text Column */}
         <motion.div
           variants={textVariant}
-          className="flex flex-col gap-6 lg:max-w-[399px] xl:max-w-[699px]"
+          className="flex flex-col gap-6 lg:max-w-[399px] xl:max-w-[499px]"
         >
           <h2 className="font-lucida font-semibold text-center text-[42px] lg:text-left lg2:text-[50px]">
             Rooted in Culture. Dialect. Intention
