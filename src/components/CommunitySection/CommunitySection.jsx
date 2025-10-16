@@ -17,7 +17,10 @@ const textVariants = {
 
 const CommunitySection = () => {
   return (
-    <section className="pt-[60px] pb-[60px] rtl" id="impact">
+    <section
+      className="bg-gradient-to-b from-pink-50 via-white to-pink-100 pt-[60px] pb-[60px] rtl"
+      id="impact"
+    >
       <Container className="relative xl:px-[229px] flex items-center justify-center overflow-visible">
         <div className="relative w-full h-[700px] flex items-center justify-center">
           <img
