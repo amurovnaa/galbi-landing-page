@@ -1,21 +1,7 @@
 import { useEffect, useState, useRef } from "react";
-import bg1 from "../../assets/images/hero-bg1.webp";
-import bg2 from "../../assets/images/hero-bg2.webp";
-import bg3 from "../../assets/images/hero-bg3.webp";
-import bg4 from "../../assets/images/hero-bg4.webp";
-import bg5 from "../../assets/images/hero-bg5.webp";
-import bg6 from "../../assets/images/hero-bg6.webp";
-import card1 from "../../assets/images/hero-card-1.webp";
-import card2 from "../../assets/images/hero-card-2.webp";
-import card3 from "../../assets/images/hero-card-3.webp";
-
+import bgVideo from "../../assets/videos/HalaGalbi.mp4";
 import AppBar from "../AppBar/AppBar.jsx";
-import {
-  AnimatePresence,
-  motion,
-  useAnimation,
-  useInView,
-} from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 import Container from "../Container/Container.jsx";
 
 const containerVariants = {
@@ -33,23 +19,9 @@ const fadeUp = {
 };
 
 const HeroSection = () => {
-  const images = [bg1, bg2, bg3, bg4, bg5, bg6];
-  const [current, setCurrent] = useState(0);
-
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const controls = useAnimation();
-
-  useEffect(() => {
-    images.forEach((src) => (new Image().src = src));
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % images.length);
-    }, 8000);
-    return () => clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     if (inView) controls.start("visible");
@@ -62,22 +34,15 @@ const HeroSection = () => {
       ref={ref}
     >
       <AppBar />
-
-      <AnimatePresence>
-        {images.map((img, index) =>
-          index === current ? (
-            <motion.div
-              key={index}
-              className="absolute top-0 left-0 w-full h-full bg-cover bg-center"
-              style={{ backgroundImage: `url(${img})` }}
-              initial={index === 0 ? false : { opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0.7 }}
-              transition={{ duration: 3, ease: "easeInOut" }}
-            />
-          ) : null
-        )}
-      </AnimatePresence>
+      <video
+        className="absolute top-0 left-0 w-full h-full object-cover"
+        src={bgVideo}
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
+      <div className="absolute top-0 left-0 w-full h-full bg-black/30"></div>
 
       <div className="absolute top-0 left-0 w-full h-full"></div>
 
@@ -102,7 +67,7 @@ const HeroSection = () => {
             tradition, dialect, and intentional love — not swiping games
           </motion.p>
           <motion.p
-            className="font-lufga italic font-normal text-2xl text-center mb-[50px] opacity-90"
+            className="font-lufga italic font-semibold text-2xl text-center mb-[50px] opacity-90"
             variants={fadeUp}
           >
             Is it Galbi or Kalbi?
