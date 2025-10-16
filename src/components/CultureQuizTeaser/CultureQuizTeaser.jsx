@@ -159,7 +159,7 @@ export default function CultureQuizTeaser() {
                   </p>
                   <div className="text-pink-600 flex items-center justify-center gap-2">
                     <FaMedal />
-                    {score >= 1 ? (
+                    {score >= 2 ? (
                       <span>
                         You earned the {selectedCountry.country} badge!
                       </span>
