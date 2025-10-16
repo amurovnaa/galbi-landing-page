@@ -1,0 +1,739 @@
+[
+  {
+    "country": "Palestine",
+    "questions": [
+      {
+        "q": "Which city is famous for its knafeh?",
+        "choices": ["Bethlehem", "Nablus", "Jericho", "Ramallah"],
+        "answer": "Nablus"
+      },
+      {
+        "q": "Which spice blend is made with thyme, toasted sesame seeds, and sumac?",
+        "choices": ["Baharat", "Za'atar", "Dukkah", "Sumac (alone)"],
+        "answer": "Za'atar"
+      },
+      {
+        "q": "You visit a Palestinian home. What are you most likely offered, no matter the time of day?",
+        "choices": [
+          "A full meal",
+          "Coffee or tea with sweets",
+          "Directions to the nearest mall",
+          "Phone charger and Wi-Fi"
+        ],
+        "answer": "Coffee or tea with sweets"
+      }
+    ]
+  },
+  {
+    "country": "Sudan",
+    "questions": [
+      {
+        "q": "When invited to a Sudanese home for dinner, you’re most likely eating from:",
+        "choices": [
+          "Individual plates with forks and knives",
+          "A shared tray (Seniyya) using flatbread or kisra",
+          "A picnic basket in the garden",
+          "A fancy dining table with 5 courses"
+        ],
+        "answer": "A shared tray (Seniyya) using flatbread or kisra"
+      },
+      {
+        "q": "During a Sudanese wedding celebration called 'Jertig', which color is worn to protect against the evil eye?",
+        "choices": ["Blue", "Red", "Yellow", "Green"],
+        "answer": "Red"
+      },
+      {
+        "q": "At a traditional Sudanese wedding, what is the groom traditionally holding when he arrives?",
+        "choices": [
+          "A bouquet of flowers",
+          "A sword and black beads",
+          "A musical instrument",
+          "A small gift box"
+        ],
+        "answer": "A sword and black beads"
+      }
+    ]
+  },
+  {
+    "country": "Pakistan",
+    "questions": [
+      {
+        "q": "What’s the classic wedding dish served at Pakistani weddings?",
+        "choices": ["Nihari", "Haleem", "Biryani", "Aloo keema"],
+        "answer": "Biryani"
+      },
+      {
+        "q": "What greeting means both peace and respect in Urdu?",
+        "choices": [
+          "Salaam Walaikum",
+          "Namaste",
+          "Assalamu Alaikum",
+          "Khuda Hafiz"
+        ],
+        "answer": "Assalamu Alaikum"
+      },
+      {
+        "q": "What’s a popular festival that marks the end of Ramadan in Pakistan?",
+        "choices": [
+          "Eid ul-Adha",
+          "Eid ul-Fitr",
+          "Milad-un-Nabi",
+          "Shab-e-Barat"
+        ],
+        "answer": "Eid ul-Fitr"
+      }
+    ]
+  },
+  {
+    "country": "Lebanon",
+    "questions": [
+      {
+        "q": "What Lebanese dish is made with raw minced meat and bulgur?",
+        "choices": ["Shawarma", "Makanek", "Kibbeh Nayyeh", "Sambousek"],
+        "answer": "Kibbeh Nayyeh"
+      },
+      {
+        "q": "What happens during a typical Lebanese wedding entrance?",
+        "choices": [
+          "Dabke line with drums",
+          "Zaffeh with dancers and zaghareet",
+          "Swords and fire",
+          "Camel procession"
+        ],
+        "answer": "Zaffeh with dancers and zaghareet"
+      },
+      {
+        "q": "What’s a Lebanese street food favorite wrapped in pita?",
+        "choices": ["Falafel", "Makanek", "Arayes", "Fattoush"],
+        "answer": "Falafel"
+      }
+    ]
+  },
+  {
+    "country": "Jordan",
+    "questions": [
+      {
+        "q": "Someone suggests having Mansaf for dinner. How are you most likely expected to eat it?",
+        "choices": [
+          "With a fork and knife, daintily",
+          "With your hands, savoring the flavors and communal experience",
+          "Only in small groups",
+          "You’d politely decline, as the smell is unbearable to you"
+        ],
+        "answer": "With your hands, savoring the flavors and communal experience"
+      },
+      {
+        "q": "What does it mean if a Jordanian says “Your blood is heavy” (Damak Tgeel)?",
+        "choices": [
+          "You need rest",
+          "You’re boring or annoying",
+          "You’re hungry",
+          "You’re mad"
+        ],
+        "answer": "You’re boring or annoying"
+      },
+      {
+        "q": "What does “Roo7 ballit il ba7ar” mean?",
+        "choices": [
+          "To go swim in the sea",
+          "To go away / Get lost / Do the impossible",
+          "To build something",
+          "To clean up a mess"
+        ],
+        "answer": "To go away / Get lost / Do the impossible"
+      }
+    ]
+  },
+  {
+    "country": "Syria",
+    "questions": [
+      {
+        "q": "A Syrian sees a baby and says “To2borni!” What are they really saying?",
+        "choices": [
+          "You’re so cute I could die",
+          "You scare me",
+          "I want to adopt you",
+          "May you live long"
+        ],
+        "answer": "You’re so cute I could die"
+      },
+      {
+        "q": "What does “Yalla ya shabab” mean in Damascus slang?",
+        "choices": [
+          "Let’s go, guys!",
+          "Stop it",
+          "Who’s hungry?",
+          "See you later"
+        ],
+        "answer": "Let’s go, guys!"
+      },
+      {
+        "q": "What’s a common Syrian phrase for expressing disbelief?",
+        "choices": ["Wallah?", "Habibi!", "Shu akhbarak?", "Yalla!"],
+        "answer": "Wallah?"
+      }
+    ]
+  },
+  {
+    "country": "Egypt",
+    "questions": [
+      {
+        "q": "When an Egyptian uses the phrase 'Haga tehar'a el dam', what are they describing?",
+        "choices": [
+          "A spicy dish",
+          "Something very frustrating or upsetting",
+          "A medical condition",
+          "A hot day"
+        ],
+        "answer": "Something very frustrating or upsetting"
+      },
+      {
+        "q": "Someone asks you 'Inta betishtaghalni?' — what do they mean?",
+        "choices": [
+          "Are you hiring?",
+          "Are you joking with me?",
+          "Are you busy?",
+          "Are you feeling well?"
+        ],
+        "answer": "Are you joking with me?"
+      },
+      {
+        "q": "Which dish is purely Egyptian and made of lentils, pasta, rice, and crispy onions?",
+        "choices": ["Ful", "Mahshi", "Koshary", "Molokhia"],
+        "answer": "Koshary"
+      }
+    ]
+  },
+  {
+    "country": "Morocco",
+    "questions": [
+      {
+        "q": "You hear someone say 'Ach dana L9ra3 nmachto lih rasso' (Why comb the bald man's head). What does it mean?",
+        "choices": [
+          "It’s good to help others",
+          "Don’t get involved in pointless trouble",
+          "Baldness is wisdom",
+          "Care for your hair"
+        ],
+        "answer": "Don’t get involved in pointless trouble"
+      },
+      {
+        "q": "'Kobb l ma f ramla' (pouring water on sand) describes:",
+        "choices": [
+          "A way to cool sand",
+          "Something futile or pointless",
+          "Irrigation method",
+          "Sand art"
+        ],
+        "answer": "Something futile or pointless"
+      },
+      {
+        "q": "What does 'Lmosh li ma ywsel l 7outa ygoul 3liha 5anza' mean?",
+        "choices": [
+          "Cats are picky",
+          "If you can’t have it, you pretend you didn’t want it",
+          "Fish should be fresh",
+          "Honesty matters"
+        ],
+        "answer": "If you can’t have it, you pretend you didn’t want it"
+      }
+    ]
+  },
+  {
+    "country": "Algeria",
+    "questions": [
+      {
+        "q": "What kind of dessert is Makroudh, a popular sweet in Algeria?",
+        "choices": [
+          "Chocolate bar",
+          "Semolina dough with dates or figs",
+          "Fruit salad",
+          "Savory pastry"
+        ],
+        "answer": "Semolina dough with dates or figs"
+      },
+
+      {
+        "q": "What does the proverb 'Cross the loud river but not the silent one' mean?",
+        "choices": [
+          "Loud rivers are safer",
+          "Better to face open drama than hidden danger",
+          "Avoid water",
+          "Stay quiet always"
+        ],
+        "answer": "Better to face open drama than hidden danger"
+      },
+      {
+        "q": "What is 'chakchouka' in Algeria?",
+        "choices": [
+          "A dance",
+          "Spicy tomato + egg dish",
+          "Money slang",
+          "Fried bread"
+        ],
+        "answer": "Spicy tomato + egg dish"
+      }
+    ]
+  },
+  {
+    "country": "Tunisia",
+    "questions": [
+      {
+        "q": "Which spicy red paste is a national obsession in Tunisia?",
+        "choices": ["Ketchup", "Mayonnaise", "Harissa", "Mustard"],
+        "answer": "Harissa"
+      },
+      {
+        "q": "Your friend says 'Zed N9es' (نقص زيد). What are they asking?",
+        "choices": [
+          "Turn the music up and down",
+          "Lower the volume a little",
+          "Add then remove ingredients",
+          "Speed up then slow down"
+        ],
+        "answer": "Lower the volume a little"
+      },
+
+      {
+        "q": "What’s 'Brik' in Tunisian food culture?",
+        "choices": [
+          "Fried pastry with egg and tuna",
+          "Couscous with lamb",
+          "Sticky rice and fish",
+          "Grape leaves with tahini"
+        ],
+        "answer": "Fried pastry with egg and tuna"
+      }
+    ]
+  },
+  {
+    "country": "Saudi Arabia",
+    "questions": [
+      {
+        "q": "What is the national dish of Saudi Arabia, a hearty and flavorful rice dish often made with meat?",
+        "choices": ["Shawarma", "Kabsah", "Mandi", "Hummus"],
+        "answer": "Kabsah"
+      },
+      {
+        "q": "What is 'Mutabaq,' a popular Saudi pastry, known for?",
+        "choices": [
+          "Being very sweet and chewy",
+          "Being a stuffed and folded pastry that can be savory or sweet",
+          "Being a type of bread for dipping",
+          "Being a comforting porridge-like dish"
+        ],
+        "answer": "Being a stuffed and folded pastry that can be savory or sweet"
+      },
+      {
+        "q": "What does the phrase 'Taslik' (تسليك) refer to in Saudi slang?",
+        "choices": [
+          "Cooking a meal",
+          "Agreeing and going along with someone even if you know they're wrong or don't care",
+          "Trying to fix something broken",
+          "Ignoring someone completely"
+        ],
+        "answer": "Agreeing and going along with someone even if you know they're wrong or don't care"
+      }
+    ]
+  },
+  {
+    "country": "United Arab Emirates",
+    "questions": [
+      {
+        "q": "What is the national dish of the UAE, a delicious rice dish often served with meat like lamb or chicken?",
+        "choices": ["Shawarma", "Kabsah", "Machboos", "Hummus"],
+        "answer": "Machboos"
+      },
+      {
+        "q": "What are 'Luqaimat,' a popular Emirati sweet, known for?",
+        "choices": [
+          "Being very sweet and crunchy dumplings",
+          "Being a stuffed and folded pastry",
+          "Being a type of bread for dipping",
+          "Being a savory pancake"
+        ],
+        "answer": "Being very sweet and crunchy dumplings"
+      },
+      {
+        "q": "If someone is described as '7afyaan' (حفيان), what two things could this jokingly imply?",
+        "choices": [
+          "They are very busy or excited",
+          "They are barefoot or broke",
+          "They are very formal or polite",
+          "They are very tired or sleepy"
+        ],
+        "answer": "They are barefoot or broke"
+      }
+    ]
+  },
+  {
+    "country": "Kuwait",
+    "questions": [
+      {
+        "q": "What's a well-known Kuwaiti dish that combines rice with shrimp, often flavored with spices like turmeric and dried loomi (black lime)?",
+        "choices": ["Machboos", "Biryani", "Murabyan", "Tashreeb"],
+        "answer": "Murabyan"
+      },
+      {
+        "q": "What kind of dessert is Gers Ogaily, also known as 'perfume cake,' popular in Kuwait?",
+        "choices": [
+          "A chocolate brownie",
+          "A sponge cake flavored with cardamom, saffron, and sesame seeds",
+          "A fruit tart",
+          "A savory pastry"
+        ],
+        "answer": "A sponge cake flavored with cardamom, saffron, and sesame seeds"
+      },
+      {
+        "q": "What is a 'Diwāniyyah' in Kuwaiti culture?",
+        "choices": [
+          "A large shopping mall",
+          "A regular gathering of men for socializing and discussion",
+          "A traditional Kuwaiti dance",
+          "A type of public transportation"
+        ],
+        "answer": "A regular gathering of men for socializing and discussion"
+      }
+    ]
+  },
+  {
+    "country": "Qatar",
+    "questions": [
+      {
+        "q": "What's the national dish of Qatar, a flavorful rice dish often made with meat?",
+        "choices": ["Shawarma", "Kabsah", "Machboos", "Hummus"],
+        "answer": "Machboos"
+      },
+      {
+        "q": "At a Qatari celebration like a wedding, what traditional dance might you see performed by men carrying swords or canes?",
+        "choices": ["Belly dance", "Al-Ardha", "Salsa", "Dabke"],
+        "answer": "Al-Ardha"
+      },
+      {
+        "q": "What drink is most commonly offered to guests upon entering a Qatari home?",
+        "choices": [
+          "Arabic coffee (gahwa)",
+          "Karak tea",
+          "Orange juice",
+          "Rosewater sherbet"
+        ],
+        "answer": "Arabic coffee (gahwa)"
+      }
+    ]
+  },
+  {
+    "country": "Bahrain",
+    "questions": [
+      {
+        "q": "What's a common Bahraini breakfast item, often served with bread and sometimes topped with lemon, olive oil, and herbs?",
+        "choices": [
+          "Pancakes",
+          "Balaleet (sweet vermicelli with omelet)",
+          "Foul Medames (fava bean stew)",
+          "Cereal"
+        ],
+        "answer": "Foul Medames (fava bean stew)"
+      },
+      {
+        "q": "When a Bahraini jokes, 'He's like a Samandega,' what are they suggesting?",
+        "choices": [
+          "They are very athletic",
+          "They are useless or don't do much, referencing a former football player",
+          "They are very popular",
+          "They are very tall"
+        ],
+        "answer": "They are useless or don't do much, referencing a former football player"
+      },
+      {
+        "q": "What drink is often served during Bahraini gatherings as a symbol of hospitality?",
+        "choices": [
+          "Coffee with cardamom",
+          "Mint lemonade",
+          "Date milkshake",
+          "Sweet lassi"
+        ],
+        "answer": "Coffee with cardamom"
+      }
+    ]
+  },
+  {
+    "country": "Oman",
+    "questions": [
+      {
+        "q": "What is a traditional Omani dish prepared for special occasions?",
+        "choices": [
+          "Tabbouleh",
+          "Shuwa – spiced meat slow-cooked underground for a day or more",
+          "Harira",
+          "Mandi"
+        ],
+        "answer": "Shuwa – spiced meat slow-cooked underground for a day or more"
+      },
+      {
+        "q": "You're cruising down the highway when the sky turns orange and someone mutters, 'Oh, a haboob is coming.' What should you prepare for?",
+        "choices": [
+          "A beloved family member",
+          "A sudden, intense sandstorm that will sandblast your car's paint",
+          "A mobile vendor",
+          "A pop-up festival"
+        ],
+        "answer": "A sudden, intense sandstorm that will sandblast your car's paint"
+      },
+      {
+        "q": "What drink is traditionally served with dates as a sign of welcome in Oman?",
+        "choices": [
+          "Laban (yogurt drink)",
+          "Omani coffee (kahwa)",
+          "Mint tea",
+          "Rose water"
+        ],
+        "answer": "Omani coffee (kahwa)"
+      }
+    ]
+  },
+  {
+    "country": "Iraq",
+    "questions": [
+      {
+        "q": "You’re invited to a traditional Iraqi dinner where the star of the show is 'Masgouf.' What’s hitting the table?",
+        "choices": [
+          "A fiery stew made with desert lizards and secret spices",
+          "A massive carp, split open, salted, and slow-cooked vertically next to an open fire",
+          "Layers of flatbread, rice, and lamb broth so dense it’s called 'Tashreeb'",
+          "Sheep’s head, eyeballs included, boiled and served with khubz"
+        ],
+        "answer": "A massive carp, split open, salted, and slow-cooked vertically next to an open fire"
+      },
+      {
+        "q": "You’re trying to describe a friend who is incredibly generous and has a big heart. What’s the best Iraqi slang to use?",
+        "choices": [
+          "Kharbosh — a scratch, meaning he’s a bit messy",
+          "Sheenah — big-nosed",
+          "Abu el-Gheera — 'father of jealousy,' fiercely protective and honorable",
+          "Shaqraawi — blonde guy"
+        ],
+        "answer": "Abu el-Gheera — 'father of jealousy,' fiercely protective and honorable"
+      },
+      {
+        "q": "Your friend greets you with 'Shaku Maku?' What does it mean?",
+        "choices": [
+          "Where are you?",
+          "What’s up?",
+          "Do you have food?",
+          "Come in!"
+        ],
+        "answer": "What’s up?"
+      }
+    ]
+  },
+  {
+    "country": "Somalia",
+    "questions": [
+      {
+        "q": "You’re served “Canjeero” for breakfast. What’s it most like?",
+        "choices": [
+          "Pancakes with syrup",
+          "A tangy, spongy flatbread—somewhere between injera and crepes",
+          "Fried dough balls",
+          "Cornbread"
+        ],
+        "answer": "A tangy, spongy flatbread—somewhere between injera and crepes"
+      },
+      {
+        "q": "You hear someone say “Nabad miyaa?” as you walk in. What are they asking?",
+        "choices": [
+          "Where are you going?",
+          "Peace? / Are things calm?",
+          "Who cooked?",
+          "What time is it?"
+        ],
+        "answer": "Peace? / Are things calm?"
+      },
+      {
+        "q": "What is “Bariis iskukaris,” a beloved Somali dish?",
+        "choices": [
+          "Plain boiled rice",
+          "Rice with chicken nuggets",
+          "Spiced rice with meat or vegetables, cooked all together in one pot",
+          "Rice with yogurt and mint"
+        ],
+        "answer": "Spiced rice with meat or vegetables, cooked all together in one pot"
+      }
+    ]
+  },
+  {
+    "country": "Bangladesh",
+    "questions": [
+      {
+        "q": "What is Kacchi Biryani, a beloved dish served at Bangladeshi weddings and Eid gatherings?",
+        "choices": [
+          "Chicken curry with plain rice",
+          "Aromatic basmati rice layered over marinated raw mutton, slow-cooked with potatoes and ghee",
+          "Stir-fried noodles with egg",
+          "Lentils mixed with rice and fish curry"
+        ],
+        "answer": "Aromatic basmati rice layered over marinated raw mutton, slow-cooked with potatoes and ghee"
+      },
+      {
+        "q": "An aunty sees you sitting alone and says, “Biye kobe?” What does she mean?",
+        "choices": [
+          "She’s offering more food",
+          "She’s asking “When are you getting married?”—and she's probably already picked someone",
+          "She’s complimenting your hair",
+          "She’s inviting you to her daughter’s wedding"
+        ],
+        "answer": "She’s asking “When are you getting married?”—and she's probably already picked someone"
+      },
+      {
+        "q": "What is “Fuchka” ?",
+        "choices": [
+          "Fried dough with sugar",
+          "Spicy lentil soup",
+          "Hollow crispy balls stuffed with spicy mashed potato and tamarind water—eaten fast, one after the other",
+          "Sticky rice dessert"
+        ],
+        "answer": "Hollow crispy balls stuffed with spicy mashed potato and tamarind water—eaten fast, one after the other"
+      }
+    ]
+  },
+  {
+    "country": "India",
+    "questions": [
+      {
+        "q": "What is Hyderabadi Haleem?",
+        "choices": [
+          "A fried snack with cheese",
+          "A slow-cooked wheat and meat porridge",
+          "A spicy lentil curry",
+          "A sweet rice dessert made with coconut"
+        ],
+        "answer": "A slow-cooked wheat and meat porridge"
+      },
+      {
+        "q": "An uncle calls you “nalaayak.” What’s he trying to say?",
+        "choices": [
+          "You’re a genius",
+          "You’re useless",
+          "You’re rude",
+          "You’re a hero"
+        ],
+        "answer": "You’re useless"
+      },
+      {
+        "q": "Your cousin says “Arrey bhai, full jugaad!” What’s going on?",
+        "choices": [
+          "Something broke",
+          "A clever fix or hack just happened",
+          "Time to pray",
+          "Someone brought dessert"
+        ],
+        "answer": "A clever fix or hack just happened"
+      }
+    ]
+  },
+  {
+    "country": "Turkey",
+    "questions": [
+      {
+        "q": "What is Menemen?",
+        "choices": [
+          "Bread and olive oil",
+          "Spicy meatballs with yogurt",
+          "Scrambled eggs cooked with tomatoes, peppers, and olive oil",
+          "Fried cheese sticks"
+        ],
+        "answer": "Scrambled eggs cooked with tomatoes, peppers, and olive oil"
+      },
+      {
+        "q": "You’re at a Turkish home and someone says “Afiyet olsun.” When is this usually said?",
+        "choices": [
+          "When someone sneezes",
+          "When someone is eating",
+          "After someone wakes up",
+          "When someone is leaving"
+        ],
+        "answer": "When someone is eating"
+      },
+      {
+        "q": "Someone is acting arrogant and flashy. A Turkish elder mutters: “Burnu havada.” What does that mean?",
+        "choices": [
+          "He’s handsome",
+          "He’s full of himself",
+          "He talks too fast",
+          "He forgot to eat"
+        ],
+        "answer": "He’s full of himself"
+      }
+    ]
+  },
+  {
+    "country": "Albania / Kosovo",
+    "questions": [
+      {
+        "q": "You’re served Byrek fresh out of the oven. What are you eating?",
+        "choices": [
+          "A type of soup",
+          "Spiced meat with rice",
+          "Flaky pastry filled with cheese, spinach, or minced meat",
+          "A sweet custard dessert"
+        ],
+        "answer": "Flaky pastry filled with cheese, spinach, or minced meat"
+      },
+      {
+        "q": "Your uncle says “Turp t’kesh!” after you talk back. What does he mean?",
+        "choices": [
+          "I’m proud of you",
+          "Shame on you",
+          "Don’t raise your voice",
+          "You’re too sensitive"
+        ],
+        "answer": "Shame on you"
+      },
+      {
+        "q": "What does it usually mean when a Kosovar mom goes silent and just says “Mirë…”?",
+        "choices": [
+          "Everything is fine",
+          "She’s definitely not fine and you should fix it before she explodes",
+          "She’s impressed",
+          "She’s tired"
+        ],
+        "answer": "She’s definitely not fine and you should fix it before she explodes"
+      }
+    ]
+  },
+  {
+    "country": "Diaspora – 3rd Culture",
+    "questions": [
+      {
+        "q": "Your cousin says “Keefik today, ça va?” What language is that?",
+        "choices": [
+          "Arabic",
+          "French",
+          "English",
+          "All of the above—and yes, that’s a full sentence"
+        ],
+        "answer": "All of the above—and yes, that’s a full sentence"
+      },
+      {
+        "q": "Your aunt sends a voice note that begins, “Beta, I’m just saying…” What’s coming next?",
+        "choices": [
+          "A recipe",
+          "Guilt, a marriage suggestion, and a story about someone else’s perfect child",
+          "A medical question",
+          "An actual compliment (rare)"
+        ],
+        "answer": "Guilt, a marriage suggestion, and a story about someone else’s perfect child"
+      },
+      {
+        "q": "You say “no thank you, I’m good,” and someone replies, “La, wallah, taste it.” What happens next?",
+        "choices": [
+          "They let it go",
+          "You’re force-fed three servings and complimented/insulted at the same time",
+          "They guilt you quietly",
+          "You run"
+        ],
+        "answer": "You’re force-fed three servings and complimented/insulted at the same time"
+      }
+    ]
+  }
+]

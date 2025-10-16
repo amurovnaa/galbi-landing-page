@@ -1,66 +1,10 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaMedal } from "react-icons/fa";
 import { Listbox } from "@headlessui/react";
 import Container from "../Container/Container.jsx";
 import { ChevronDownIcon } from "lucide-react";
-
-const QUIZ_DATA = [
-  {
-    country: "Palestine",
-    questions: [
-      {
-        q: "Which city is famous for its knafeh?",
-        choices: ["Bethlehem", "Nablus", "Jericho", "Ramallah"],
-        answer: "Nablus",
-      },
-      {
-        q: "Which spice blend is made with thyme, toasted sesame seeds, and sumac?",
-        choices: ["Baharat", "Za'atar", "Dukkah", "Sumac"],
-        answer: "Za'atar",
-      },
-      {
-        q: "“His onion is burnt!” means what?",
-        choices: [
-          "He’s broke",
-          "He can’t cook",
-          "He’s impatient or in a rush",
-          "He smells bad",
-        ],
-        answer: "He’s impatient or in a rush",
-      },
-    ],
-  },
-  {
-    country: "Jordan",
-    questions: [
-      {
-        q: "Which Jordanian city is known for its ancient ruins?",
-        choices: ["Amman", "Petra", "Aqaba", "Irbid"],
-        answer: "Petra",
-      },
-      {
-        q: "What is the traditional Jordanian dish?",
-        choices: ["Mansaf", "Kebab", "Shawarma", "Falafel"],
-        answer: "Mansaf",
-      },
-    ],
-  },
-  {
-    country: "Egypt",
-    questions: [
-      {
-        q: "Which river is essential to Egyptian civilization?",
-        choices: ["Nile", "Amazon", "Tigris", "Danube"],
-        answer: "Nile",
-      },
-      {
-        q: "What is the traditional Egyptian bread called?",
-        choices: ["Baladi", "Pita", "Bagel", "Chapati"],
-        answer: "Baladi",
-      },
-    ],
-  },
-];
+import QUIZ_DATA from "../../data/quizData.json";
 
 export default function CultureQuizTeaser() {
   const [selectedCountry, setSelectedCountry] = useState(null);
@@ -82,9 +26,23 @@ export default function CultureQuizTeaser() {
     setSubmitted(true);
   };
 
+  const questionVariant = {
+    hidden: { opacity: 0, y: 40 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        delay: i * 0.15,
+        ease: "easeOut",
+      },
+    }),
+    exit: { opacity: 0, y: -30, transition: { duration: 0.3 } },
+  };
+
   return (
     <section
-      className="py-16 px-4 bg-gradient-to-b from-pink-50 via-white to-pink-100 flex justify-center text-black rtl"
+      className="py-16 px-4 bg-gradient-to-b from-pink-50 via-white to-pink-100 flex justify-center text-black"
       id="vibe-check"
     >
       <Container className="xl:px-[240px] flex flex-col items-center justify-center">
@@ -127,50 +85,61 @@ export default function CultureQuizTeaser() {
           )}
         </div>
 
-        {/* Quiz Questions */}
-        {selectedCountry && (
-          <div className="grid gap-6 md:grid-cols-2">
-            {selectedCountry.questions.map((q, i) => (
-              <div
-                key={i}
-                className="bg-white shadow-md p-6 rounded-xl hover:shadow-lg transition duration-300"
-              >
-                <p className="font-medium text-lg mb-3">{q.q}</p>
-                <ul className="space-y-2">
-                  {q.choices.map((choice, ci) => {
-                    const isCorrect = submitted && choice === q.answer;
-                    const isWrong =
-                      submitted && answers[i] === choice && choice !== q.answer;
+        <AnimatePresence mode="wait">
+          {selectedCountry && (
+            <motion.ul
+              key={selectedCountry.country}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="grid gap-6 lg:grid-cols-3"
+            >
+              {selectedCountry.questions.map((q, i) => (
+                <motion.li
+                  key={i}
+                  variants={questionVariant}
+                  custom={i}
+                  className="bg-white shadow-[0_1px_15px_0_rgba(0,0,0,0.05)] p-[30px] pr-[38px] rounded-[20px] hover:shadow-md transition-shadow duration-300"
+                >
+                  <p className="font-medium text-lg mb-3">{q.q}</p>
+                  <ul className="space-y-2">
+                    {q.choices.map((choice, ci) => {
+                      const isCorrect = submitted && choice === q.answer;
+                      const isWrong =
+                        submitted &&
+                        answers[i] === choice &&
+                        choice !== q.answer;
 
-                    return (
-                      <li
-                        key={ci}
-                        className={`flex items-center gap-2 p-2 rounded-md cursor-pointer border transition-all
-                          ${
-                            isCorrect
-                              ? "border-green-400 bg-green-50"
-                              : isWrong
-                              ? "border-red-400 bg-red-50"
-                              : "border-gray-200 hover:border-pink-300 hover:bg-pink-50"
-                          }`}
-                        onClick={() => !submitted && handleChange(i, choice)}
-                      >
-                        <input
-                          type="checkbox"
-                          checked={answers[i] === choice}
-                          onChange={() => handleChange(i, choice)}
-                          disabled={submitted}
-                          className="accent-pink-500"
-                        />
-                        <span>{choice}</span>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            ))}
-          </div>
-        )}
+                      return (
+                        <li
+                          key={ci}
+                          className={`flex items-center gap-2 p-2 rounded-md cursor-pointer border transition-all
+                            ${
+                              isCorrect
+                                ? "border-green-400 bg-green-50"
+                                : isWrong
+                                ? "border-red-400 bg-red-50"
+                                : "border-gray-200 hover:border-pink-300 hover:bg-pink-50"
+                            }`}
+                          onClick={() => !submitted && handleChange(i, choice)}
+                        >
+                          <input
+                            type="checkbox"
+                            checked={answers[i] === choice}
+                            onChange={() => handleChange(i, choice)}
+                            disabled={submitted}
+                            className="accent-pink-500"
+                          />
+                          <span>{choice}</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </motion.li>
+              ))}
+            </motion.ul>
+          )}
+        </AnimatePresence>
 
         {selectedCountry && (
           <div className="mt-12 flex flex-col items-center gap-6">
@@ -200,18 +169,21 @@ export default function CultureQuizTeaser() {
                   </div>
                 </div>
                 <button
-                  className="
-    w-[278px] h-16 flex items-center justify-center gap-[10px]
-    font-inter font-semibold text-[19px] text-center text-white
-    px-[34px] py-5 rounded-2xl
-    bg-gradient-to-b from-[#fb1555] to-[#8d1caa]
-    shadow-none
-    transition-[box-shadow,background-position,background-color] duration-700 ease-in-out
-    hover:shadow-[0_2px_20px_rgba(0,0,0,0.15)]
-    hover:from-[#ff4a7c] hover:to-[#a42fc2]
-  "
+                  onClick={() => {
+                    setSelectedCountry(null);
+                    setAnswers({});
+                    setSubmitted(false);
+                    setScore(null);
+                  }}
+                  className="w-[278px] h-16 flex items-center justify-center gap-[10px]
+                    font-inter font-semibold text-[19px] text-center text-white
+                    px-[34px] py-5 rounded-2xl
+                    bg-gradient-to-b from-[#fb1555] to-[#8d1caa]
+                    transition duration-700 ease-in-out
+                    hover:shadow-[0_2px_20px_rgba(0,0,0,0.15)]
+                    hover:from-[#ff4a7c] hover:to-[#a42fc2]"
                 >
-                  <span className="">Try the Quiz</span>
+                  <span>Try the Quiz</span>
                   <svg
                     className="inline-block w-6 h-6"
                     strokeWidth="1.5"

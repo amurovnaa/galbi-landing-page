@@ -23,36 +23,32 @@ const schema = yup.object({
   thoughts: yup.string().max(300, "Max 300 characters"),
 });
 
-// --- Dropdown options ---
 const countries = [
   "Palestine",
-  "Jordan",
+  "Sudan",
+  "Pakistan",
   "Lebanon",
+  "Jordan",
   "Syria",
   "Egypt",
   "Morocco",
   "Algeria",
   "Tunisia",
-  "Sudan",
   "Saudi Arabia",
-  "UAE",
+  "United Arab Emirates",
   "Kuwait",
   "Qatar",
   "Bahrain",
   "Oman",
   "Iraq",
-  "Pakistan",
-  "Bangladesh",
-  "India (Muslim)",
   "Somalia",
-  "Albania / Kosovo",
+  "Bangladesh",
+  "India",
   "Turkey",
-  "Ukraine",
-  "USA",
-  "UK",
-  "Canada",
-  "France",
+  "Albania / Kosovo",
+  "Diaspora – 3rd Culture",
 ];
+
 const genders = ["Male", "Female", "Prefer not to say"];
 const causes = ["Palestine", "Sudan", "Yemen", "Ukraine", "Congo"];
 
