@@ -33,11 +33,19 @@ const MockupSection = () => {
         {/* Text Column */}
         <motion.div
           variants={textVariant}
-          className="flex flex-col gap-6 lg:max-w-[399px] xl:max-w-[499px]"
+          className="flex flex-col gap-6 lg:max-w-[499px] lg:mr-16"
         >
           <h2 className="font-lucida font-semibold text-center text-[42px] lg:text-left lg2:text-[50px]">
             Rooted in Culture. Dialect. Intention
           </h2>
+          <motion.p
+            className="font-normal text-xl leading-normal text-center opacity-90 lg:text-left"
+            variants={textVariant}
+          >
+            <span className="font-semibold">Galbi</span> is a culture-first
+            dating app built for people who value tradition, dialect, and
+            intentional love — not swiping games
+          </motion.p>
           <p className="font-normal text-xl leading-normal text-center lg:text-left">
             You’re not just looking for a match. You’re looking for someone who
             gets your dialect, your values, your rhythm. That’s why we built{" "}

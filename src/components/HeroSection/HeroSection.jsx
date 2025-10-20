@@ -60,13 +60,6 @@ const HeroSection = () => {
             Your background is just the beginning
           </motion.h1>
           <motion.p
-            className="font-normal text-[22px] leading-[1.64] text-center mb-[30px] opacity-90"
-            variants={fadeUp}
-          >
-            Galbi is a culture-first dating app built for people who value
-            tradition, dialect, and intentional love — not swiping games
-          </motion.p>
-          <motion.p
             className="font-lufga italic font-semibold text-2xl text-center mb-[50px] opacity-90"
             variants={fadeUp}
           >

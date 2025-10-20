@@ -30,7 +30,7 @@ export default function DynamicMockup() {
     <div
       onMouseMove={handleMouseMove}
       onMouseLeave={resetTilt}
-      className="relative flex items-center justify-center min-h-[750px] overflow-visible py-[60px]"
+      className="relative flex items-center justify-center min-h-[750px] overflow-visible"
     >
       {/* Glow Orbs */}
       <div className="absolute top-[10%] left-[20%] w-[200px] h-[200px] sm:w-52 sm:h-52 bg-pink-500/30 blur-[120px] rounded-full" />
@@ -47,7 +47,7 @@ export default function DynamicMockup() {
         <motion.img
           src={phoneImg}
           alt="App Preview"
-          className="relative z-10 w-[260px] sm:w-[320px] md:w-[380px] xl:w-[402px] drop-shadow-[0_0_25px_rgba(255,255,255,0.15)]"
+          className="relative z-10 w-[260px] sm:w-[320px] lg:w-[280px] xxl:w-[402px] drop-shadow-[0_0_25px_rgba(255,255,255,0.15)]"
           animate={floatingMotion(12, 1.5, 5)}
         />
 
@@ -85,7 +85,7 @@ export default function DynamicMockup() {
 
         {/* Floating Checkmark */}
         <motion.div
-          className="absolute xs:bottom-[10%] md:bottom-[50%] left-[77%] sm:left-[72%] md:left-[75%] xl:left-[77%] z-30 rounded-full w-[110px] sm:w-28 md:w-28 xl:w-[110px] h-[110px] sm:h-28 md:h-28 xl:h-[110px] flex items-center justify-center shadow-[0_0_20px_rgba(251,21,85,0.5)]"
+          className="absolute xs:bottom-[10%] md:bottom-[40%] left-[77%] sm:left-[72%] md:left-[75%] xl:left-[77%] z-30 rounded-full w-[110px] sm:w-28 md:w-28 xl:w-[110px] h-[110px] sm:h-28 md:h-28 xl:h-[110px] flex items-center justify-center shadow-[0_0_20px_rgba(251,21,85,0.5)]"
           animate={{ ...floatingMotion(10, 8, 4), scale: [1, 1.1, 1] }}
           style={{ background: "linear-gradient(135deg,#fb1555,#8d1caa)" }}
         >
