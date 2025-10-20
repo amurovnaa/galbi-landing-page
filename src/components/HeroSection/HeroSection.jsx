@@ -77,8 +77,11 @@ const HeroSection = () => {
     hover:from-[#ff4a7c] hover:to-[#a42fc2] md:w-[358px] md:h-16 md:text-[19px]
   "
             variants={fadeUp}
+            on
           >
-            <span className="">Join the Founding Members</span>
+            <a className="" href="#sign-up">
+              Join the Founding Members
+            </a>
             <svg
               className="inline-block w-6 h-6"
               strokeWidth="1.5"

@@ -114,7 +114,7 @@ const FeaturesSection = () => {
           className="
             w-[278px] h-16 flex items-center justify-center gap-[10px]
             font-inter font-semibold text-[19px] text-center text-white
-            px-[34px] py-5 rounded-2xl
+            px-[34px]  rounded-2xl
             bg-gradient-to-b from-[#fb1555] to-[#8d1caa]
             shadow-none
             transition-[box-shadow,background-position,background-color] duration-700 ease-in-out
@@ -125,7 +125,9 @@ const FeaturesSection = () => {
           initial="hidden"
           animate={controls}
         >
-          <span className="">Join the Movement</span>
+          <a className="py-5" href="#sign-up">
+            Join the Movement
+          </a>
           <svg
             className="inline-block w-6 h-6"
             strokeWidth="1.5"
