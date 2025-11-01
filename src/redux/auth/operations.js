@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { auth } from "../../firebase.js";
+import { auth, db } from "../../firebase.js";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -8,29 +8,73 @@ import {
   updateProfile,
 } from "firebase/auth";
 import toast from "react-hot-toast";
+import { doc, setDoc } from "firebase/firestore";
+import { getUserMetadata } from "../../utils/getUsersMetaData.js";
 
 // Register
 export const registerUser = createAsyncThunk(
   "auth/register",
-  async ({ email, password, displayName }, { rejectWithValue }) => {
+  async (userData, { rejectWithValue }) => {
+    const {
+      email,
+      password,
+      displayName,
+      country,
+      dialect,
+      gender,
+      // brands,
+      cause,
+      thoughts,
+      howDidYouHear,
+      wantAmbassador,
+      wantCollaborate,
+      collabNote,
+    } = userData;
+
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
-      await updateProfile(userCredential.user, { displayName });
+      const user = userCredential.user;
 
-      const user = {
-        uid: userCredential.user.uid,
-        email: userCredential.user.email,
-        displayName: userCredential.user.displayName,
+      await updateProfile(user, { displayName });
+
+      const metadata = await getUserMetadata();
+
+      const userDoc = {
+        uid: user.uid,
+        email: user.email,
+        displayName,
+        country: country || "",
+        dialect: dialect || "",
+        gender: gender || "",
+        // brands: brands || [],
+        cause: cause || "",
+        thoughts: thoughts || "",
+        howDidYouHear: howDidYouHear || "",
+        wantAmbassador: !!wantAmbassador,
+        wantCollaborate: !!wantCollaborate,
+        collabNote: wantCollaborate ? collabNote || "" : "",
+        createdAt: new Date().toISOString(),
+        source: metadata.source,
+        countryDetected: metadata.country || "",
+        city: metadata.city || "",
+        device: metadata.platform || "",
+        browserLanguage: metadata.language || "",
       };
 
-      toast.success("Welcome! You’re registered! 🎉");
-      return user;
+      await setDoc(doc(db, "users", user.uid), userDoc);
+
+      return { ...userDoc };
     } catch (error) {
-      toast.error("Registration failed!");
+      console.error("Register error:", error);
+      if (error.code === "auth/email-already-in-use") {
+        toast.error("This email is already registered. Try signing in!");
+      } else {
+        toast.error("Registration failed. Please try again.");
+      }
       return rejectWithValue(error.message);
     }
   }

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { Listbox } from "@headlessui/react";
 import { ChevronDownIcon } from "lucide-react";
@@ -8,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../redux/auth/operations";
 import { selectIsRefreshing } from "../../redux/auth/selectors";
 import toast from "react-hot-toast";
+import { useState } from "react";
+import { Modal } from "../Modal/Modal.jsx";
 
 // --- Validation Schema ---
 const schema = yup.object({
@@ -55,13 +56,14 @@ const causes = ["Palestine", "Sudan", "Yemen", "Ukraine", "Congo"];
 export default function AuthForm() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsRefreshing);
-
-  const [selectedCause, setSelectedCause] = useState(causes[0]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
   const {
     control,
     handleSubmit,
     register,
+    watch,
     formState: { errors },
     reset,
   } = useForm({
@@ -74,12 +76,18 @@ export default function AuthForm() {
       dialect: "",
       gender: "",
       thoughts: "",
+      howDidYouHear: "",
       brands: [],
       cause: causes[0],
+      collabNote: "",
+      wantAmbassador: false,
+      wantCollaborate: false,
     },
   });
 
-  const onSubmit = (data) => {
+  const wantCollaborate = watch("wantCollaborate");
+
+  const onSubmit = async (data) => {
     console.log("Form submitted:", data);
     const payload = {
       email: data.email,
@@ -87,184 +95,221 @@ export default function AuthForm() {
       displayName: data.name,
       country: data.country,
       dialect: data.dialect,
-      gender: data.gender,
-      brands: data.brands,
+      gender: data.gender.toLowerCase(),
+      // brands: data.brands?.map((b) => b.toLowerCase()) || [],
       cause: data.cause,
-      thoughts: data.thoughts,
+      thoughts: data.thoughts || "",
+      howDidYouHear: data.howDidYouHear?.toLowerCase() || "",
+      intent: data.intent?.toLowerCase() || "",
+      wantAmbassador: !!data.wantAmbassador,
+      wantCollaborate: !!data.wantCollaborate,
+      collabNote: data.wantCollaborate ? data.collabNote || "" : "",
     };
     dispatch(registerUser(payload))
       .unwrap()
       .then(() => {
-        toast.success("Account created successfully!");
+        toast.success("You’re in! We’ll email you when your city opens.");
         reset();
-      })
-      .catch((err) => {
-        toast.error(err);
+        if (data.wantAmbassador || data.wantCollaborate) {
+          setModalMessage(
+            "We love that you want to help build Galbi. We’ll reach out soon ❤️"
+          );
+          setModalOpen(true);
+        }
       });
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="max-w-[1200px] w-full mx-auto  p-[50px]
+    <>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="max-w-[1200px] w-full mx-auto  p-[50px]
     rounded-[30px] backdrop-blur-[50px]
     bg-[linear-gradient(135deg,rgba(196,196,196,0.12)_0%,rgba(196,196,196,0.12)_100%)]"
-    >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-[30px]">
-        <div className="max-h-[81px]">
-          <label className="font-bold text-base leading-[1.4] block mb-2">
-            Name
-          </label>
-          <input
-            {...register("name")}
-            placeholder="Enter Your Name"
-            className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-[30px]">
+          <div className="max-h-[81px]">
+            <label className="font-bold text-base leading-[1.4] block mb-2">
+              Name
+            </label>
+            <input
+              {...register("name")}
+              placeholder="Enter Your Name"
+              className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
             font-normal text-base placeholder-white placeholder-font-inter placeholder-opacity-60 border border-solid 
             border-[rgba(255,255,255,0.3)] focus:ring-1 focus:ring-pink-400 outline-none"
-          />
-          <p className="text-red-400 text-sm">{errors.name?.message}</p>
-        </div>
+            />
+            <p className="text-red-400 text-sm">{errors.name?.message}</p>
+          </div>
 
-        {/* Email */}
-        <div>
-          <label className="font-bold text-base leading-[1.4] block mb-2">
-            Email
-          </label>
-          <input
-            {...register("email")}
-            placeholder="Enter Your Email"
-            className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
+          {/* Email */}
+          <div>
+            <label className="font-bold text-base leading-[1.4] block mb-2">
+              Email
+            </label>
+            <input
+              {...register("email")}
+              placeholder="Enter Your Email"
+              className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
             font-normal text-base placeholder-white placeholder-font-inter placeholder-opacity-60 border border-solid 
             border-[rgba(255,255,255,0.3)] focus:ring-1 focus:ring-pink-400 outline-none"
-          />
-          <p className="text-red-400 text-sm">{errors.email?.message}</p>
-        </div>
+            />
+            <p className="text-red-400 text-sm">{errors.email?.message}</p>
+          </div>
 
-        {/* Password */}
-        <div>
-          <label className="font-bold text-base leading-[1.4] block mb-2">
-            Password
-          </label>
-          <input
-            {...register("password")}
-            type="password"
-            placeholder="Enter Password"
-            className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
+          {/* Password */}
+          <div>
+            <label className="font-bold text-base leading-[1.4] block mb-2">
+              Password
+            </label>
+            <input
+              {...register("password")}
+              type="password"
+              placeholder="Enter Password"
+              className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
             font-normal text-base placeholder-white placeholder-font-inter placeholder-opacity-60 border border-solid 
             border-[rgba(255,255,255,0.3)] focus:ring-1 focus:ring-pink-400 outline-none"
-          />
-          <p className="text-red-400 text-sm">{errors.password?.message}</p>
-        </div>
+            />
+            <p className="text-red-400 text-sm">{errors.password?.message}</p>
+          </div>
 
-        {/* Country */}
-        <div>
-          <label className="font-bold text-base leading-[1.4] block mb-2">
-            Country
-          </label>
-          <Controller
-            name="country"
-            control={control}
-            render={({ field }) => (
-              <Listbox value={field.value} onChange={field.onChange}>
-                <div className="relative">
-                  <Listbox.Button
-                    className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
+          {/* Country */}
+          <div>
+            <label className="font-bold text-base leading-[1.4] block mb-2">
+              Country
+            </label>
+            <Controller
+              name="country"
+              control={control}
+              render={({ field }) => (
+                <Listbox value={field.value} onChange={field.onChange}>
+                  <div className="relative">
+                    <Listbox.Button
+                      className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
             font-normal text-base text-opacity-60 border border-solid 
             border-[rgba(255,255,255,0.3)] placeholder-white placeholder-font-inter placeholder-opacity-60 focus:ring-1 focus:ring-pink-400 outline-none text-left flex justify-between items-center"
-                  >
-                    <span>{field.value || "Select Your Country"}</span>
-                    <ChevronDownIcon className="w-4 h-4" />
-                  </Listbox.Button>
-                  <Listbox.Options className="absolute mt-2 w-full max-h-60 overflow-y-auto bg-gray-900 rounded-lg shadow-lg z-10">
-                    {countries.map((c) => (
-                      <Listbox.Option
-                        key={c}
-                        value={c}
-                        className="cursor-pointer p-2 hover:bg-pink-500/30"
-                      >
-                        {c}
-                      </Listbox.Option>
-                    ))}
-                  </Listbox.Options>
-                </div>
-              </Listbox>
-            )}
-          />
-          <p className="text-red-400 text-sm">{errors.country?.message}</p>
-        </div>
+                    >
+                      <span>{field.value || "Select Your Country"}</span>
+                      <ChevronDownIcon className="w-4 h-4" />
+                    </Listbox.Button>
+                    <Listbox.Options className="absolute mt-2 w-full max-h-60 overflow-y-auto bg-gray-900 rounded-lg shadow-lg z-10">
+                      {countries.map((c) => (
+                        <Listbox.Option
+                          key={c}
+                          value={c}
+                          className="cursor-pointer p-2 hover:bg-pink-500/30"
+                        >
+                          {c}
+                        </Listbox.Option>
+                      ))}
+                    </Listbox.Options>
+                  </div>
+                </Listbox>
+              )}
+            />
+            <p className="text-red-400 text-sm">{errors.country?.message}</p>
+          </div>
 
-        {/* Dialect */}
-        <div>
-          <label className="font-bold text-base leading-[1.4] block mb-2">
-            Dialect or Heritage
-          </label>
-          <input
-            {...register("dialect")}
-            placeholder="Enter Dialect or Heritage"
-            className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
+          {/* Dialect */}
+          <div>
+            <label className="font-bold text-base leading-[1.4] block mb-2">
+              Dialect or Heritage
+            </label>
+            <input
+              {...register("dialect")}
+              placeholder="Enter Dialect or Heritage"
+              className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
             font-normal text-base placeholder-white placeholder-font-inter placeholder-opacity-60 border border-solid 
             border-[rgba(255,255,255,0.3)] focus:ring-1 focus:ring-pink-400 outline-none"
-          />
-          <p className="text-red-400 text-sm">{errors.dialect?.message}</p>
-        </div>
+            />
+            <p className="text-red-400 text-sm">{errors.dialect?.message}</p>
+          </div>
 
-        {/* Gender */}
-        <div>
-          <label className="font-bold text-base leading-[1.4] block mb-2">
-            Gender Identity
-          </label>
-          <Controller
-            name="gender"
-            control={control}
-            render={({ field }) => (
-              <Listbox value={field.value} onChange={field.onChange}>
-                <div className="relative">
-                  <Listbox.Button
-                    className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
+          {/* Intent (optional) */}
+          <div>
+            <label className="font-bold text-base leading-[1.4] block mb-2">
+              Intent (optional)
+            </label>
+            <input
+              {...register("intent")}
+              placeholder="Why are you joining Galbi?"
+              className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
+            font-normal text-base placeholder-white placeholder-font-inter placeholder-opacity-60 border border-solid 
+            border-[rgba(255,255,255,0.3)] focus:ring-1 focus:ring-pink-400 outline-none"
+            />
+          </div>
+
+          {/* Gender */}
+          <div>
+            <label className="font-bold text-base leading-[1.4] block mb-2">
+              Gender Identity
+            </label>
+            <Controller
+              name="gender"
+              control={control}
+              render={({ field }) => (
+                <Listbox value={field.value} onChange={field.onChange}>
+                  <div className="relative">
+                    <Listbox.Button
+                      className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
             font-normal text-base text-opacity-50 border border-solid 
             border-[rgba(255,255,255,0.3)] placeholder-white placeholder-font-inter placeholder-opacity-60 focus:ring-1 focus:ring-pink-400 outline-none text-left flex justify-between items-center"
-                  >
-                    <span>{field.value || "Select Your Gender"}</span>
-                    <ChevronDownIcon className="w-4 h-4" />
-                  </Listbox.Button>
-                  <Listbox.Options className="absolute mt-2 w-full max-h-60 overflow-y-auto bg-gray-900 rounded-lg shadow-lg z-10">
-                    {genders.map((g) => (
-                      <Listbox.Option
-                        key={g}
-                        value={g}
-                        className="cursor-pointer p-2 hover:bg-pink-500/30"
-                      >
-                        {g}
-                      </Listbox.Option>
-                    ))}
-                  </Listbox.Options>
-                </div>
-              </Listbox>
-            )}
-          />
-          <p className="text-red-400 text-sm">{errors.gender?.message}</p>
+                    >
+                      <span>{field.value || "Select Your Gender"}</span>
+                      <ChevronDownIcon className="w-4 h-4" />
+                    </Listbox.Button>
+                    <Listbox.Options className="absolute mt-2 w-full max-h-60 overflow-y-auto bg-gray-900 rounded-lg shadow-lg z-10">
+                      {genders.map((g) => (
+                        <Listbox.Option
+                          key={g}
+                          value={g}
+                          className="cursor-pointer p-2 hover:bg-pink-500/30"
+                        >
+                          {g}
+                        </Listbox.Option>
+                      ))}
+                    </Listbox.Options>
+                  </div>
+                </Listbox>
+              )}
+            />
+            <p className="text-red-400 text-sm">{errors.gender?.message}</p>
+          </div>
+
+          {/* How did you hear */}
+          <div className="">
+            <label className="font-bold text-base leading-[1.4] block mb-2">
+              How did you hear about Galbi?
+            </label>
+            <input
+              {...register("howDidYouHear")}
+              placeholder="Instagram, friends, event..."
+              className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
+            font-normal text-base placeholder-white placeholder-font-inter placeholder-opacity-60 border border-solid 
+            border-[rgba(255,255,255,0.3)] focus:ring-1 focus:ring-pink-400 outline-none"
+            />
+          </div>
         </div>
-      </div>
 
-      {/* Thoughts */}
-      <div className="mb-[30px]">
-        <label className="block mb-[2px] font-bold text-base leading-[1.4]">
-          What is Galbi to you?
-        </label>
-        <span className="block mb-4 font-normal text-sm leading-[1.4] opacity-[0.8]">
-          What features or values would you love to see on Galbi?
-        </span>
-        <textarea
-          {...register("thoughts")}
-          placeholder="Share Your Thoughts..."
-          className="w-full bg-white/10 border border-white/20 border max-w-[1100px] min-h-[109px] p-4 rounded-lg 
+        {/* Thoughts */}
+        <div className="mb-[30px]">
+          <label className="block mb-[2px] font-bold text-base leading-[1.4]">
+            What is Galbi to you?
+          </label>
+          <span className="block mb-4 font-normal text-sm leading-[1.4] opacity-[0.8]">
+            What features or values would you love to see on Galbi?
+          </span>
+          <textarea
+            {...register("thoughts")}
+            placeholder="Share Your Thoughts..."
+            className="w-full bg-white/10 border border-white/20 border max-w-[1100px] min-h-[109px] p-4 rounded-lg 
           border-solid border-[rgba(255,255,255,0.3)] placeholder-opacity-60 placeholder-white focus:ring-1 focus:ring-pink-400 outline-none min-h-[100px]"
-        />
-        <p className="text-red-400 text-sm">{errors.thoughts?.message}</p>
-      </div>
+          />
+          <p className="text-red-400 text-sm">{errors.thoughts?.message}</p>
+        </div>
 
-      {/* Brand involvement checkboxes */}
-      <div className="mb-[30px]">
+        {/* Brand involvement checkboxes */}
+        {/* <div className="mb-[30px]">
         <p className="font-roboto font-medium text-lg leading-[1.44] mb-3">
           Optional Brand Involvement:
         </p>
@@ -289,48 +334,86 @@ export default function AuthForm() {
             </label>
           ))}
         </div>
-      </div>
+      </div> */}
+        {/* Brand involvement checkboxes */}
+        <div className="mb-[30px]">
+          <p className="font-roboto font-medium text-lg leading-[1.44] mb-3">
+            Optional Brand Involvement:
+          </p>
 
-      {/* Causes */}
-      <div className="mb-[60px]">
-        <label className="block mb-[2px] font-bold text-base leading-[1.4]">
-          Causes You Care About
-        </label>
-        <span className="text-sm leading-[1.4] opacity-80 block mb-2">
-          show one or two example causes in the dropdown (e.g. Palestine, Sudan,
-          Yemen).
-        </span>
-        <Controller
-          name="cause"
-          control={control}
-          render={({ field }) => (
-            <Listbox value={field.value} onChange={field.onChange}>
-              <div className="relative">
-                <Listbox.Button className="w-full min-h-[51px] placeholder-white placeholder-font-inter placeholder-opacity-60 bg-white/10 border border-white/20 rounded-lg p-3 text-left flex justify-between items-center">
-                  <span className="font-normal">{field.value}</span>
-                  <ChevronDownIcon className="w-4 h-4" />
-                </Listbox.Button>
-                <Listbox.Options className=" absolute mt-2 w-full max-h-60 overflow-y-auto bg-gray-900 rounded-lg shadow-lg z-10">
-                  {causes.map((cause) => (
-                    <Listbox.Option
-                      key={cause}
-                      value={cause}
-                      className="cursor-pointer p-2 hover:bg-pink-500/30"
-                    >
-                      {cause}
-                    </Listbox.Option>
-                  ))}
-                </Listbox.Options>
-              </div>
-            </Listbox>
-          )}
-        />
-      </div>
-      <div className="flex justify-center items-center">
-        <button
-          type="submit"
-          disabled={isLoading}
-          className="
+          <div className="flex flex-col gap-2">
+            {/* Ambassador */}
+            <label className="font-roboto flex items-center gap-3 text-[15px] leading-[1.47] tracking-[0.02em] opacity-80">
+              <input
+                type="checkbox"
+                className="accent-pink-500"
+                {...register("wantAmbassador")}
+              />
+              I’d like to be a Galbi Ambassador
+            </label>
+
+            {/* Collaborate */}
+            <label className="font-roboto flex items-center gap-3 text-[15px] leading-[1.47] tracking-[0.02em] opacity-80">
+              <input
+                type="checkbox"
+                className="accent-pink-500"
+                {...register("wantCollaborate")}
+              />
+              I’d like to collaborate or work with Galbi
+            </label>
+
+            {/* Show input if checked */}
+            {wantCollaborate && (
+              <textarea
+                {...register("collabNote")}
+                placeholder="Tell us briefly how you'd like to collaborate..."
+                className="w-full bg-white/10 border border-white/20 border max-w-[1100px] min-h-[51px] p-4 rounded-lg 
+          border-solid border-[rgba(255,255,255,0.3)] placeholder-opacity-60 placeholder-white focus:ring-1 focus:ring-pink-400 outline-none min-h-[100px]"
+              />
+            )}
+          </div>
+        </div>
+
+        {/* Causes */}
+        <div className="mb-[60px]">
+          <label className="block mb-[2px] font-bold text-base leading-[1.4]">
+            Causes You Care About
+          </label>
+          <span className="text-sm leading-[1.4] opacity-80 block mb-2">
+            show one or two example causes in the dropdown (e.g. Palestine,
+            Sudan, Yemen).
+          </span>
+          <Controller
+            name="cause"
+            control={control}
+            render={({ field }) => (
+              <Listbox value={field.value} onChange={field.onChange}>
+                <div className="relative">
+                  <Listbox.Button className="w-full min-h-[51px] placeholder-white placeholder-font-inter placeholder-opacity-60 bg-white/10 border border-white/20 rounded-lg p-3 text-left flex justify-between items-center">
+                    <span className="font-normal">{field.value}</span>
+                    <ChevronDownIcon className="w-4 h-4" />
+                  </Listbox.Button>
+                  <Listbox.Options className=" absolute mt-2 w-full max-h-60 overflow-y-auto bg-gray-900 rounded-lg shadow-lg z-10">
+                    {causes.map((cause) => (
+                      <Listbox.Option
+                        key={cause}
+                        value={cause}
+                        className="cursor-pointer p-2 hover:bg-pink-500/30"
+                      >
+                        {cause}
+                      </Listbox.Option>
+                    ))}
+                  </Listbox.Options>
+                </div>
+              </Listbox>
+            )}
+          />
+        </div>
+        <div className="flex justify-center items-center">
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="
     w-[228px] h-16 
     font-inter font-semibold text-[19px] text-center text-white
     px-2 py-2 rounded-2xl
@@ -340,24 +423,30 @@ export default function AuthForm() {
     hover:shadow-[0_2px_20px_rgba(0,0,0,0.15)]
     hover:from-[#ff4a7c] hover:to-[#a42fc2]
   "
-        >
-          {isLoading ? (
-            <span className="">Saving...</span>
-          ) : (
-            <div className="flex items-center justify-center gap-[10px]">
-              <span className="">Save My Spot</span>
-              <svg
-                className="inline-block w-6 h-6"
-                strokeWidth="1.5"
-                stroke="#fff"
-                fill="none"
-              >
-                <use href="/sprite.svg#icon-arrow-right"></use>
-              </svg>
-            </div>
-          )}
-        </button>
-      </div>
-    </form>
+          >
+            {isLoading ? (
+              <span className="">Saving...</span>
+            ) : (
+              <div className="flex items-center justify-center gap-[10px]">
+                <span className="">Save My Spot</span>
+                <svg
+                  className="inline-block w-6 h-6"
+                  strokeWidth="1.5"
+                  stroke="#fff"
+                  fill="none"
+                >
+                  <use href="/sprite.svg#icon-arrow-right"></use>
+                </svg>
+              </div>
+            )}
+          </button>
+        </div>
+      </form>
+      <Modal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        message={modalMessage}
+      />
+    </>
   );
 }
