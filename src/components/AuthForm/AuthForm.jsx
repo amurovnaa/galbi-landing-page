@@ -112,7 +112,7 @@ export default function AuthForm() {
         reset();
         if (data.wantAmbassador || data.wantCollaborate) {
           setModalMessage(
-            "We love that you want to help build Galbi. We’ll reach out soon ❤️"
+            "We love that you want to help build Galbi. We’ll reach out soon 🩷"
           );
           setModalOpen(true);
         }

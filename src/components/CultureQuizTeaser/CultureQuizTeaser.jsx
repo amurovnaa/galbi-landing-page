@@ -48,7 +48,7 @@ export default function CultureQuizTeaser() {
 
   return (
     <section
-      className="py-16 px-4 bg-gradient-to-b from-pink-50 via-white to-pink-100 flex justify-center text-black"
+      className="py-16 bg-gradient-to-b from-pink-50 via-white to-pink-100 flex justify-center text-black"
       id="vibe-check"
     >
       <Container className="xl:px-[240px] flex flex-col items-center justify-center">
