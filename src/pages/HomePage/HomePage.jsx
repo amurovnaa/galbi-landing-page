@@ -5,7 +5,7 @@ import HeroSection from "../../components/HeroSection/HeroSection.jsx";
 import MockupSection from "../../components/MockupSection/MockupSection.jsx";
 import SignUpSection from "../../components/SignUpSection/SignUpSection.jsx";
 
-export const HomePage = () => {
+const HomePage = () => {
   return (
     <>
       <main>
@@ -19,3 +19,4 @@ export const HomePage = () => {
     </>
   );
 };
+export default HomePage;

@@ -9,6 +9,7 @@ import { selectIsRefreshing } from "../../redux/auth/selectors";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { Modal } from "../Modal/Modal.jsx";
+import Loader from "../Loader/Loader.jsx";
 
 // --- Validation Schema ---
 const schema = yup.object({
@@ -89,6 +90,7 @@ export default function AuthForm() {
 
   const onSubmit = async (data) => {
     console.log("Form submitted:", data);
+    console.log("IsLoads:", isLoading);
     const payload = {
       email: data.email,
       password: data.password,
@@ -121,6 +123,7 @@ export default function AuthForm() {
 
   return (
     <>
+      {isLoading && <Loader />}
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="max-w-[1200px] w-full mx-auto  p-[50px]

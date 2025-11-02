@@ -1,13 +1,20 @@
 import { Toaster } from "react-hot-toast";
-import { HomePage } from "./pages/HomePage/HomePage.jsx";
 import Layout from "./components/Layout/Layout.jsx";
-import { PrivacyTermsPage } from "./pages/PrivacyTermsPage/PrivacyTermsPage.jsx";
-import { OurStoryPage } from "./pages/OurStoryPage/OurStoryPage.jsx";
-import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage.jsx";
-import { Suspense } from "react";
+import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router";
 import Loader from "./components/Loader/Loader.jsx";
 
+const HomePage = lazy(
+  () =>
+    new Promise((resolve) =>
+      setTimeout(() => resolve(import("./pages/HomePage/HomePage")), 2000)
+    )
+);
+const PrivacyTermsPage = lazy(() =>
+  import("./pages/PrivacyTermsPage/PrivacyTermsPage")
+);
+const OurStoryPage = lazy(() => import("./pages/OurStoryPage/OurStoryPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 function App() {
   return (
     <>

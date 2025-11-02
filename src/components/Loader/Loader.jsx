@@ -1,6 +1,6 @@
 import { ClipLoader } from "react-spinners";
 
-const Loader = ({ loading = true, size = 50, color = "#e11d48" }) => {
+const Loader = ({ loading = true, size = 50, color = "#db2777" }) => {
   if (!loading) return null;
 
   return (
