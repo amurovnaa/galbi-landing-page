@@ -1,6 +1,7 @@
 import galbiLogo from "../../assets/images/galbi-logo.webp";
 import footerBgImg from "../../assets/images/footer-bg.webp";
 import Container from "../Container/Container.jsx";
+import { Link } from "react-router";
 
 const Footer = () => {
   return (
@@ -17,17 +18,14 @@ const Footer = () => {
               Galbi is made with love for people who still believe in
               intentional connection.
             </h2>
-            <ul className="flex flex-col gap-10 font-normal text-xl text-center mb-[55px] wrap md:flex-row">
-              <li>
-                <a href="/">About</a>
+            <ul className="flex flex-col gap-8 text-[18px] font-normal text-center mb-[55px] wrap md:flex-row">
+              <li className="opacity-90 hover:opacity-100">
+                <Link to="/story">Our Story</Link>
               </li>
-              <li>
-                <a href="/">Terms</a>
+              <li className="opacity-90 hover:opacity-100">
+                <Link to="/privacy">Privacy & Terms</Link>
               </li>
-              <li>
-                <a href="/">Privacy</a>
-              </li>
-              <li>
+              <li className="opacity-90 hover:opacity-100">
                 <a href="/">Contact</a>
               </li>
             </ul>

@@ -4,7 +4,7 @@ const Loader = ({ loading = true, size = 50, color = "#e11d48" }) => {
   if (!loading) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-white/90 z-[9999]">
+    <div className="fixed inset-0 flex items-center justify-center bg-white/70 z-[9999]">
       <ClipLoader size={size} color={color} />
     </div>
   );

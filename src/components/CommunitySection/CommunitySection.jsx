@@ -45,7 +45,7 @@ const CommunitySection = () => {
               variants={textVariants}
               initial="hidden"
               whileInView="visible"
-              custom={0.5}
+              custom={0.4}
               viewport={{ once: true, amount: 0.3 }}
               className="max-w-[800px] font-medium text-xl leading-[1.58] text-center"
             >
