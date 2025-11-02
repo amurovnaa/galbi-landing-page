@@ -1,24 +1,28 @@
-import Footer from "./components/Footer/Footer.jsx";
-import HeroSection from "./components/HeroSection/HeroSection.jsx";
-import SignUpSection from "./components/SignUpSection/SignUpSection.jsx";
 import { Toaster } from "react-hot-toast";
-import CommunitySection from "./components/CommunitySection/CommunitySection.jsx";
-import FeaturesSection from "./components/FeaturesSection/FeaturesSection.jsx";
-import CultureQuizTeaser from "./components/CultureQuizTeaser/CultureQuizTeaser.jsx";
-import MockupSection from "./components/MockupSection/MockupSection.jsx";
+import { HomePage } from "./pages/HomePage/HomePage.jsx";
+import Layout from "./components/Layout/Layout.jsx";
+import { PrivacyTermsPage } from "./pages/PrivacyTermsPage/PrivacyTermsPage.jsx";
+import { OurStoryPage } from "./pages/OurStoryPage/OurStoryPage.jsx";
+import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage.jsx";
+import { Suspense } from "react";
+import { Route, Routes } from "react-router";
+import Loader from "./components/Loader/Loader.jsx";
 
 function App() {
   return (
-    <div className="">
-      <HeroSection />
-      <MockupSection />
-      <FeaturesSection />
-      <CultureQuizTeaser />
-      <SignUpSection />
-      <CommunitySection />
-      <Footer />
+    <>
       <Toaster position="top-center" />
-    </div>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/privacy" element={<PrivacyTermsPage />} />
+            <Route path="/story" element={<OurStoryPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </>
   );
 }
 

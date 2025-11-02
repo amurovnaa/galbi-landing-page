@@ -35,7 +35,7 @@ const MockupSection = () => {
           variants={textVariant}
           className="flex flex-col gap-6 lg:max-w-[499px] lg:mr-16"
         >
-          <h2 className="font-lucida font-semibold text-center text-[42px] lg:text-left lg2:text-[50px]">
+          <h2 className="font-lucida font-semibold text-center text-[40px] sm:text-[50px] lg:text-left lg2:text-[50px]">
             Rooted in Culture. Dialect. Intention
           </h2>
           <motion.p

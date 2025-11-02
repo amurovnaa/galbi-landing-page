@@ -29,22 +29,19 @@ const HeroSection = () => {
 
   return (
     <section
-      className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-visible rtl"
+      className="w-full min-h-screen flex flex-col items-center justify-center overflow-visible rtl"
       id="hero"
       ref={ref}
     >
-      <AppBar />
       <video
-        className="absolute top-0 left-0 w-full h-full object-cover"
+        className="absolute left-0 w-full h-full object-cover"
         src={bgVideo}
         autoPlay
         loop
         muted
         playsInline
       />
-      <div className="absolute top-0 left-0 w-full h-full bg-black/30"></div>
-
-      <div className="absolute top-0 left-0 w-full h-full"></div>
+      <div className="absolute left-0 w-full h-full bg-black/30"></div>
 
       <Container className="relative z-10 mt-[232px] mb-[130px] xxl:px-[405px] flex flex-col justify-center items-center gap-[100px]">
         <motion.div
@@ -54,7 +51,7 @@ const HeroSection = () => {
           animate={controls}
         >
           <motion.h1
-            className="font-lucida font-semibold text-[50px]  leading-[1.14] text-center text-white mb-6 md:text-[70px]"
+            className="font-lucida font-semibold text-[40px] sm:text-[50px] leading-[1.14] text-center text-white mb-6 md:text-[70px]"
             variants={fadeUp}
           >
             Your background is just the beginning

@@ -36,7 +36,7 @@ const SignUpSection = () => {
           variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
         >
           <motion.h2
-            className="font-lucida font-semibold text-[50px] text-center mb-6"
+            className="font-lucida font-semibold text-[40px] sm:text-[50px] text-center mb-6"
             variants={fadeUp}
           >
             Join the Founding Members

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaMedal } from "react-icons/fa";
 import { Listbox } from "@headlessui/react";
@@ -11,6 +11,12 @@ export default function CultureQuizTeaser() {
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [score, setScore] = useState(null);
+
+  useEffect(() => {
+    setAnswers({});
+    setSubmitted(false);
+    setScore(null);
+  }, [selectedCountry]);
 
   const handleChange = (qIndex, choice) => {
     setAnswers({ ...answers, [qIndex]: choice });
@@ -31,13 +37,13 @@ export default function CultureQuizTeaser() {
     visible: (i) => ({
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.5,
-        delay: i * 0.15,
-        ease: "easeOut",
-      },
+      transition: { duration: 0.5, delay: i * 0.2, ease: "easeInOut" },
     }),
-    exit: { opacity: 0, y: -30, transition: { duration: 0.3 } },
+    exit: {
+      opacity: 0,
+      y: -30,
+      transition: { duration: 0.3, ease: "easeInOut" },
+    },
   };
 
   return (
@@ -46,49 +52,47 @@ export default function CultureQuizTeaser() {
       id="vibe-check"
     >
       <Container className="xl:px-[240px] flex flex-col items-center justify-center">
-        <div className="text-center mb-[80px] flex flex-col items-center justify-center">
-          <h2 className="font-lucida font-semibold text-[50px] text-black mb-6">
+        <div className="text-center mb-[36px] flex flex-col items-center justify-center">
+          <h2 className="font-lucida font-semibold text-[40px] sm:text-[50px] text-black mb-6">
             Earn Your Heritage Badge
           </h2>
           <p className="text-xl text-black opacity-90 mb-6">
             Every culture has its rhythm. Take the quiz, claim your badge.
           </p>
 
-          {!selectedCountry && (
-            <div className="w-full max-w-[535px]">
-              <Listbox value={selectedCountry} onChange={setSelectedCountry}>
-                <div className="relative">
-                  <Listbox.Button
-                    className="w-full bg-white rounded-lg p-4 
+          <div className="w-full max-w-[535px]">
+            <Listbox value={selectedCountry} onChange={setSelectedCountry}>
+              <div className="relative">
+                <Listbox.Button
+                  className="w-full bg-white rounded-lg p-4 
                       font-normal text-base text-opacity-50 border border-solid 
                       border-[rgba(255,255,255,0.3)] placeholder-white placeholder-opacity-60 focus:ring-1 focus:ring-pink-400 outline-none text-left flex justify-between items-center"
-                  >
-                    <span>
-                      {selectedCountry?.country || "Select Your Country"}
-                    </span>
-                    <ChevronDownIcon className="w-4 h-4" />
-                  </Listbox.Button>
-                  <Listbox.Options className="absolute mt-2 w-full max-h-60 overflow-y-auto bg-gray-900 text-white text-left rounded-lg shadow-lg z-10">
-                    {QUIZ_DATA.map((c) => (
-                      <Listbox.Option
-                        key={c.country}
-                        value={c}
-                        className="cursor-pointer p-2 hover:bg-pink-500/30"
-                      >
-                        {c.country}
-                      </Listbox.Option>
-                    ))}
-                  </Listbox.Options>
-                </div>
-              </Listbox>
-            </div>
-          )}
+                >
+                  <span>
+                    {selectedCountry?.country || "Select Your Country"}
+                  </span>
+                  <ChevronDownIcon className="w-4 h-4" />
+                </Listbox.Button>
+                <Listbox.Options className="absolute mt-2 w-full max-h-60 overflow-y-auto bg-gray-900 text-white text-left rounded-lg shadow-lg z-10">
+                  {QUIZ_DATA.map((c) => (
+                    <Listbox.Option
+                      key={c.country}
+                      value={c}
+                      className="cursor-pointer p-2 hover:bg-pink-500/30"
+                    >
+                      {c.country}
+                    </Listbox.Option>
+                  ))}
+                </Listbox.Options>
+              </div>
+            </Listbox>
+          </div>
         </div>
 
         <AnimatePresence mode="wait">
           {selectedCountry && (
             <motion.ul
-              key={selectedCountry.country}
+              key={selectedCountry?.country || "empty"}
               initial="hidden"
               animate="visible"
               exit="exit"

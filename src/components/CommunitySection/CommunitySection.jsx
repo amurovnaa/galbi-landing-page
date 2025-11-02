@@ -21,7 +21,7 @@ const CommunitySection = () => {
       className="bg-gradient-to-b from-pink-50 via-white to-pink-100 pt-[60px] pb-[60px] rtl"
       id="impact"
     >
-      <Container className="relative xl:px-[229px] flex items-center justify-center overflow-visible">
+      <Container className="relative flex items-center justify-center overflow-visible">
         <div className="relative w-full h-[700px] flex items-center justify-center">
           <img
             src={communityBg}
@@ -36,7 +36,7 @@ const CommunitySection = () => {
               whileInView="visible"
               custom={0.2}
               viewport={{ once: true, amount: 0.3 }}
-              className="font-lucida font-semibold text-[30px] md:text-[65px] leading-tight mb-[50px]"
+              className="font-lucida font-semibold text-[40px] sm:text-[50px] leading-tight mb-[50px]"
             >
               Built by us. For us. For good.
             </motion.h2>
@@ -47,7 +47,7 @@ const CommunitySection = () => {
               whileInView="visible"
               custom={0.5}
               viewport={{ once: true, amount: 0.3 }}
-              className="max-w-[800px] font-medium text-2xl leading-[1.58] text-center"
+              className="max-w-[800px] font-medium text-xl leading-[1.58] text-center"
             >
               Galbi isn’t just an app. It’s a choice to build love with meaning.
               <br />

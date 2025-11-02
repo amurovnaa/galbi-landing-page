@@ -21,14 +21,14 @@ const AppBar = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
-    <header className="absolute top-0 left-0 w-full z-50 bg-transparent">
+    <header className="w-full bg-transparent">
       <div className="max-w-[1920px] mx-auto flex items-center justify-between px-6 py-[25px] md:px-[50px] relative">
         <a href="/">
           <img className="w-[52px] h-[50px]" src={galbiLogo} alt="Galbi Logo" />
         </a>
 
-        <div className="hidden lg:flex items-center justify-center gap-[110px]">
-          <Navigation />
+        <div className="hidden lg:flex items-center justify-center gap-[90px]">
+          <Navigation textColor="text-black" />
           {isLoggedIn ? <UserMenu /> : <AuthNav />}
         </div>
 
@@ -36,7 +36,11 @@ const AppBar = () => {
           onClick={toggleMenu}
           className="lg:hidden text-3xl focus:outline-none text-white relative z-[60]"
         >
-          {menuOpen ? <IoMdClose /> : <CiMenuFries />}
+          {menuOpen ? (
+            <IoMdClose color="white" />
+          ) : (
+            <CiMenuFries color="black" />
+          )}
         </button>
       </div>
 
@@ -50,7 +54,7 @@ const AppBar = () => {
         tracking-wide"
           onClick={handleLinkClick}
         >
-          <Navigation />
+          <Navigation textColor="text-white" />
           {isLoggedIn ? <UserMenu /> : <AuthNav />}
         </div>
       </div>
