@@ -22,9 +22,13 @@ const AppBar = () => {
 
   return (
     <header className="w-full bg-transparent">
-      <div className="max-w-[1920px] mx-auto flex items-center justify-between px-6 py-[25px] md:px-[50px] relative">
+      <div className="max-w-[1920px] mx-auto flex items-center justify-between px-6 py-[20px] md:px-[50px] relative">
         <a href="/">
-          <img className="w-[52px] h-[50px]" src={galbiLogo} alt="Galbi Logo" />
+          <img
+            className="w-[32px] h-[30px] lg:w-[42px] lg:h-[40px]"
+            src={galbiLogo}
+            alt="Galbi Logo"
+          />
         </a>
 
         <div className="hidden lg:flex items-center justify-center gap-[90px]">

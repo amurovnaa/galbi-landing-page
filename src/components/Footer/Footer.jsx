@@ -13,7 +13,7 @@ const Footer = () => {
       <Container className="relative z-10 xxl:px-[240px] flex justify-center pt-[100px] pb-[50px]">
         <div className="flex flex-col gap-[100px] max-w-[900px] items-center">
           <div className="flex flex-col items-center justify-center">
-            <img className="w-[81px] h-[80px] mb-10" src={galbiLogo} />
+            <img className="mb-10 w-[52px] h-[50px] " src={galbiLogo} />
             <h2 className="leading-[1.4] font-semibold text-4xl text-center mb-[55px]">
               Galbi is made with love for people who still believe in
               intentional connection.
