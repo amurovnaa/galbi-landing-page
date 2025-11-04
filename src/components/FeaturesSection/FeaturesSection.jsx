@@ -59,14 +59,10 @@ const FeaturesSection = () => {
   if (inView) controls.start("visible");
 
   return (
-    <section
-      className="text-center pt-[120px] pb-[120px] rtl"
-      id="features"
-      ref={ref}
-    >
+    <section className="text-center py-[80px] rtl" id="features" ref={ref}>
       <Container className="xl:px-[240px] flex flex-col items-center justify-center">
         <motion.h2
-          className="font-lucida font-semibold text-[40px] sm:text-[50px] text-center text-black mb-6"
+          className="font-lucida font-semibold text-center text-black mb-6 text-[40px] lg:text-[48px]"
           variants={fadeUp}
           initial="hidden"
           animate={controls}
@@ -75,7 +71,7 @@ const FeaturesSection = () => {
         </motion.h2>
 
         <motion.p
-          className="font-normal text-xl leading-normal text-center text-black opacity-90 mb-[100px]"
+          className="font-normal text-xl leading-normal text-center text-black opacity-90 mb-[60px]"
           variants={fadeUp}
           initial="hidden"
           animate={controls}
@@ -111,15 +107,13 @@ const FeaturesSection = () => {
         </motion.ul>
 
         <motion.button
-          className="
-            w-[278px] h-16 flex items-center justify-center gap-[10px]
-            font-inter font-semibold text-[19px] text-center text-white
-            px-[34px]  rounded-2xl
-            bg-gradient-to-b from-[#fb1555] to-[#8d1caa]
-            shadow-none
-            transition-[box-shadow,background-position,background-color] duration-700 ease-in-out
-            hover:shadow-[0_2px_20px_rgba(0,0,0,0.15)]
-            hover:from-[#ff4a7c] hover:to-[#a42fc2]
+          className="max-w-[358px] max-h-14 flex items-center justify-center gap-[10px]
+        font-inter font-semibold text-[14px] text-center text-white
+        px-7 py-3 rounded-[16px]
+        bg-gradient-to-b from-[#fb1555] to-[#8d1caa]
+        hover:shadow-[0_2px_20px_rgba(0,0,0,0.15)]
+        transition duration-700 ease-in-out
+        hover:from-[#ff4a7c] hover:to-[#a42fc2] lg:text-[16px]
           "
           variants={fadeUp}
           initial="hidden"
@@ -129,8 +123,8 @@ const FeaturesSection = () => {
             Join the Movement
           </a>
           <svg
-            className="inline-block w-6 h-6"
-            strokeWidth="1.5"
+            className="inline-block w-4 h-4"
+            strokeWidth="2"
             stroke="#fff"
             fill="none"
           >

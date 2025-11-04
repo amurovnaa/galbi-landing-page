@@ -18,7 +18,7 @@ const textVariants = {
 const CommunitySection = () => {
   return (
     <section
-      className="bg-gradient-to-b from-pink-50 via-white to-pink-100 pt-[60px] pb-[60px] rtl"
+      className="bg-gradient-to-b from-pink-50 via-white to-pink-100 py-[80px] rtl"
       id="impact"
     >
       <Container className="relative flex items-center justify-center overflow-visible">
@@ -36,7 +36,7 @@ const CommunitySection = () => {
               whileInView="visible"
               custom={0.2}
               viewport={{ once: true, amount: 0.3 }}
-              className="font-lucida font-semibold text-[40px] sm:text-[50px] leading-tight mb-[50px]"
+              className="font-lucida font-semibold leading-tight mb-10 text-[40px] lg:text-[48px]"
             >
               Built by us. For us. For good.
             </motion.h2>

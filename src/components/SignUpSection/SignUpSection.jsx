@@ -29,14 +29,14 @@ const SignUpSection = () => {
       id="sign-up"
       ref={ref}
     >
-      <Container className=" py-[120px] flex flex-col items-center justify-center gap-[100px] xxl:px-[360px]">
+      <Container className=" py-[90px] flex flex-col items-center justify-center gap-[60px] xxl:px-[360px]">
         <motion.div
           initial="hidden"
           animate={controls}
           variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
         >
           <motion.h2
-            className="font-lucida font-semibold text-[40px] sm:text-[50px] text-center mb-6"
+            className="font-lucida font-semibold text-center mb-6 text-[40px] lg:text-[48px]"
             variants={fadeUp}
           >
             Join the Founding Members

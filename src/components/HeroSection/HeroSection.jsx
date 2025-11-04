@@ -51,33 +51,33 @@ const HeroSection = () => {
           animate={controls}
         >
           <motion.h1
-            className="font-lucida font-semibold text-[40px] sm:text-[50px] leading-[1.14] text-center text-white mb-6 md:text-[60px]"
+            className="font-lucida font-semibold text-[40px]  leading-[1.14] text-center text-white mb-6 lg:text-[50px] xl:text-[60px]"
             variants={fadeUp}
           >
             Your background is just the beginning
           </motion.h1>
 
           <motion.p
-            className="font-lufga italic font-medium text-2xl text-center mb-[50px] opacity-90"
+            className="font-lufga italic font-medium text-[20px] text-center mb-[50px] opacity-90 lg:text-[28px]"
             variants={fadeUp}
           >
             Is it Galbi or Kalbi?
           </motion.p>
 
           <motion.button
-            className="max-w-[358px] min-h-16 flex items-center justify-center gap-[10px]
-        font-inter font-semibold text-[19px] text-center text-white
-        px-4 py-2 rounded-2xl
+            className="max-w-[358px] max-h-16 flex items-center justify-center gap-[10px]
+       font-semibold text-[14px] text-center text-white
+        px-7 py-4 rounded-2xl
         bg-gradient-to-b from-[#fb1555] to-[#8d1caa]
         hover:shadow-[0_2px_20px_rgba(0,0,0,0.15)]
         transition duration-700 ease-in-out
-        hover:from-[#ff4a7c] hover:to-[#a42fc2] md:w-[358px] md:h-16 md:text-[19px]"
+        hover:from-[#ff4a7c] hover:to-[#a42fc2] lg:text-[16px]"
             variants={fadeUp}
           >
             <a href="#sign-up">Join the Founding Members</a>
             <svg
-              className="inline-block w-6 h-6"
-              strokeWidth="1.5"
+              className="inline-block w-4 h-4"
+              strokeWidth="2"
               stroke="#fff"
               fill="none"
             >

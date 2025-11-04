@@ -24,7 +24,7 @@ const mockupVariant = {
 const MockupSection = () => {
   return (
     <motion.section
-      className="bg-gradient-to-b from-pink-50 via-white to-pink-100 text-black py-[60px] overflow-hidden"
+      className="bg-gradient-to-b from-pink-50 via-white to-pink-100 text-black py-[80px] overflow-hidden"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
@@ -35,7 +35,7 @@ const MockupSection = () => {
           variants={textVariant}
           className="flex flex-col gap-6 lg:max-w-[499px] lg:mr-16"
         >
-          <h2 className="font-lucida font-semibold text-center text-[40px] sm:text-[50px] lg:text-left lg2:text-[50px]">
+          <h2 className="font-lucida font-semibold text-center text-[40px] lg:text-[48px] lg:text-left">
             Rooted in Culture. Dialect. Intention
           </h2>
           <motion.p

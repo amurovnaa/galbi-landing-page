@@ -132,14 +132,14 @@ export default function AuthForm() {
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-[30px]">
           <div className="max-h-[81px]">
-            <label className="font-bold text-base leading-[1.4] block mb-2">
+            <label className="font-normal text-base leading-[1.4] block mb-2">
               Name
             </label>
             <input
               {...register("name")}
               placeholder="Enter Your Name"
-              className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
-            font-normal text-base placeholder-white placeholder-font-inter placeholder-opacity-60 border border-solid 
+              className="w-full max-w-[535px] bg-white/10 rounded-lg p-3 
+            font-normal text-[14px] placeholder-white placeholder-font-inter placeholder-opacity-60 border border-solid 
             border-[rgba(255,255,255,0.3)] focus:ring-1 focus:ring-pink-400 outline-none"
             />
             <p className="text-red-400 text-sm">{errors.name?.message}</p>
@@ -147,14 +147,14 @@ export default function AuthForm() {
 
           {/* Email */}
           <div>
-            <label className="font-bold text-base leading-[1.4] block mb-2">
+            <label className="font-normal text-base leading-[1.4] block mb-2">
               Email
             </label>
             <input
               {...register("email")}
               placeholder="Enter Your Email"
-              className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
-            font-normal text-base placeholder-white placeholder-font-inter placeholder-opacity-60 border border-solid 
+              className="w-full max-w-[535px] bg-white/10 rounded-lg p-3 
+            font-normal text-[14px] placeholder-white placeholder-font-inter placeholder-opacity-60 border border-solid 
             border-[rgba(255,255,255,0.3)] focus:ring-1 focus:ring-pink-400 outline-none"
             />
             <p className="text-red-400 text-sm">{errors.email?.message}</p>
@@ -162,15 +162,15 @@ export default function AuthForm() {
 
           {/* Password */}
           <div>
-            <label className="font-bold text-base leading-[1.4] block mb-2">
+            <label className="font-normal text-base leading-[1.4] block mb-2">
               Password
             </label>
             <input
               {...register("password")}
               type="password"
               placeholder="Enter Password"
-              className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
-            font-normal text-base placeholder-white placeholder-font-inter placeholder-opacity-60 border border-solid 
+              className="w-full max-w-[535px] bg-white/10 rounded-lg p-3 
+            font-normal text-[14px] placeholder-white placeholder-font-inter placeholder-opacity-60 border border-solid 
             border-[rgba(255,255,255,0.3)] focus:ring-1 focus:ring-pink-400 outline-none"
             />
             <p className="text-red-400 text-sm">{errors.password?.message}</p>
@@ -178,7 +178,7 @@ export default function AuthForm() {
 
           {/* Country */}
           <div>
-            <label className="font-bold text-base leading-[1.4] block mb-2">
+            <label className="font-normal text-base leading-[1.4] block mb-2">
               Country
             </label>
             <Controller
@@ -188,8 +188,8 @@ export default function AuthForm() {
                 <Listbox value={field.value} onChange={field.onChange}>
                   <div className="relative">
                     <Listbox.Button
-                      className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
-            font-normal text-base text-opacity-60 border border-solid 
+                      className="w-full max-w-[535px] bg-white/10 rounded-lg p-3 
+            font-normal text-[14px] text-opacity-60 border border-solid 
             border-[rgba(255,255,255,0.3)] placeholder-white placeholder-font-inter placeholder-opacity-60 focus:ring-1 focus:ring-pink-400 outline-none text-left flex justify-between items-center"
                     >
                       <span>{field.value || "Select Your Country"}</span>
@@ -215,14 +215,14 @@ export default function AuthForm() {
 
           {/* Dialect */}
           <div>
-            <label className="font-bold text-base leading-[1.4] block mb-2">
+            <label className="font-normal text-base leading-[1.4] block mb-2">
               Dialect or Heritage
             </label>
             <input
               {...register("dialect")}
               placeholder="Enter Dialect or Heritage"
-              className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
-            font-normal text-base placeholder-white placeholder-font-inter placeholder-opacity-60 border border-solid 
+              className="w-full max-w-[535px] bg-white/10 rounded-lg p-3 
+            font-normal text-[14px] placeholder-white placeholder-font-inter placeholder-opacity-60 border border-solid 
             border-[rgba(255,255,255,0.3)] focus:ring-1 focus:ring-pink-400 outline-none"
             />
             <p className="text-red-400 text-sm">{errors.dialect?.message}</p>
@@ -230,21 +230,21 @@ export default function AuthForm() {
 
           {/* Intent (optional) */}
           <div>
-            <label className="font-bold text-base leading-[1.4] block mb-2">
+            <label className="font-normal text-base leading-[1.4] block mb-2">
               Intent (optional)
             </label>
             <input
               {...register("intent")}
               placeholder="Why are you joining Galbi?"
-              className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
-            font-normal text-base placeholder-white placeholder-font-inter placeholder-opacity-60 border border-solid 
+              className="w-full max-w-[535px] bg-white/10 rounded-lg p-3 
+            font-normal text-[14px] placeholder-white placeholder-font-inter placeholder-opacity-60 border border-solid 
             border-[rgba(255,255,255,0.3)] focus:ring-1 focus:ring-pink-400 outline-none"
             />
           </div>
 
           {/* Gender */}
           <div>
-            <label className="font-bold text-base leading-[1.4] block mb-2">
+            <label className="font-normal text-base leading-[1.4] block mb-2">
               Gender Identity
             </label>
             <Controller
@@ -254,8 +254,8 @@ export default function AuthForm() {
                 <Listbox value={field.value} onChange={field.onChange}>
                   <div className="relative">
                     <Listbox.Button
-                      className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
-            font-normal text-base text-opacity-50 border border-solid 
+                      className="w-full max-w-[535px] bg-white/10 rounded-lg p-3 
+            font-normal text-[14px] text-opacity-50 border border-solid 
             border-[rgba(255,255,255,0.3)] placeholder-white placeholder-font-inter placeholder-opacity-60 focus:ring-1 focus:ring-pink-400 outline-none text-left flex justify-between items-center"
                     >
                       <span>{field.value || "Select Your Gender"}</span>
@@ -281,14 +281,14 @@ export default function AuthForm() {
 
           {/* How did you hear */}
           <div className="">
-            <label className="font-bold text-base leading-[1.4] block mb-2">
+            <label className="font-normal text-base leading-[1.4] block mb-2">
               How did you hear about Galbi?
             </label>
             <input
               {...register("howDidYouHear")}
               placeholder="Instagram, friends, event..."
-              className="w-full max-w-[535px] bg-white/10 rounded-lg p-4 
-            font-normal text-base placeholder-white placeholder-font-inter placeholder-opacity-60 border border-solid 
+              className="w-full max-w-[535px] bg-white/10 rounded-lg p-3 
+            font-normal text-[14px] placeholder-white placeholder-font-inter placeholder-opacity-60 border border-solid 
             border-[rgba(255,255,255,0.3)] focus:ring-1 focus:ring-pink-400 outline-none"
             />
           </div>
@@ -296,17 +296,17 @@ export default function AuthForm() {
 
         {/* Thoughts */}
         <div className="mb-[30px]">
-          <label className="block mb-[2px] font-bold text-base leading-[1.4]">
+          <label className="block mb-[2px] font-normal text-base leading-[1.4]">
             What is Galbi to you?
           </label>
-          <span className="block mb-4 font-normal text-sm leading-[1.4] opacity-[0.8]">
+          <span className="block mb-4 font-normal text-[14px] leading-[1.4] opacity-[0.8]">
             What features or values would you love to see on Galbi?
           </span>
           <textarea
             {...register("thoughts")}
             placeholder="Share Your Thoughts..."
-            className="w-full bg-white/10 border border-white/20 border max-w-[1100px] min-h-[109px] p-4 rounded-lg 
-          border-solid border-[rgba(255,255,255,0.3)] placeholder-opacity-60 placeholder-white focus:ring-1 focus:ring-pink-400 outline-none min-h-[100px]"
+            className="text-[14px] w-full bg-white/10 border border-white/20 border max-w-[1100px] min-h-[109px] p-3 rounded-lg 
+          border-solid border-[rgba(255,255,255,0.3)] placeholder-opacity-60 placeholder-white focus:ring-1 focus:ring-pink-400 outline-none min-h-[66px]"
           />
           <p className="text-red-400 text-sm">{errors.thoughts?.message}</p>
         </div>
@@ -338,9 +338,10 @@ export default function AuthForm() {
           ))}
         </div>
       </div> */}
+
         {/* Brand involvement checkboxes */}
         <div className="mb-[30px]">
-          <p className="font-roboto font-medium text-lg leading-[1.44] mb-3">
+          <p className="font-roboto font-normal text-[16px] leading-[1.44] mb-3">
             Optional Brand Involvement:
           </p>
 
@@ -370,7 +371,7 @@ export default function AuthForm() {
               <textarea
                 {...register("collabNote")}
                 placeholder="Tell us briefly how you'd like to collaborate..."
-                className="w-full bg-white/10 border border-white/20 border max-w-[1100px] min-h-[51px] p-4 rounded-lg 
+                className="w-full bg-white/10 border border-white/20 border max-w-[1100px] text-[14px] min-h-[51px] p-3 rounded-lg 
           border-solid border-[rgba(255,255,255,0.3)] placeholder-opacity-60 placeholder-white focus:ring-1 focus:ring-pink-400 outline-none min-h-[100px]"
               />
             )}
@@ -379,10 +380,10 @@ export default function AuthForm() {
 
         {/* Causes */}
         <div className="mb-[60px]">
-          <label className="block mb-[2px] font-bold text-base leading-[1.4]">
+          <label className="block mb-[2px] font-normal text-base leading-[1.4]">
             Causes You Care About
           </label>
-          <span className="text-sm leading-[1.4] opacity-80 block mb-2">
+          <span className="text-[14px] leading-[1.4] opacity-80 block mb-2">
             show one or two example causes in the dropdown (e.g. Palestine,
             Sudan, Yemen).
           </span>
@@ -392,7 +393,7 @@ export default function AuthForm() {
             render={({ field }) => (
               <Listbox value={field.value} onChange={field.onChange}>
                 <div className="relative">
-                  <Listbox.Button className="w-full min-h-[51px] placeholder-white placeholder-font-inter placeholder-opacity-60 bg-white/10 border border-white/20 rounded-lg p-3 text-left flex justify-between items-center">
+                  <Listbox.Button className="w-full min-h-[51px] placeholder-white placeholder-font-inter placeholder-opacity-60 text-[14px] bg-white/10 border border-white/20 rounded-lg p-3 text-left flex justify-between items-center">
                     <span className="font-normal">{field.value}</span>
                     <ChevronDownIcon className="w-4 h-4" />
                   </Listbox.Button>
@@ -417,24 +418,23 @@ export default function AuthForm() {
             type="submit"
             disabled={isLoading}
             className="
-    w-[228px] h-16 
-    font-inter font-semibold text-[19px] text-center text-white
-    px-2 py-2 rounded-2xl
-    bg-gradient-to-b from-[#fb1555] to-[#8d1caa]
-    shadow-none
-    transition-[box-shadow,background-position,background-color] duration-700 ease-in-out
-    hover:shadow-[0_2px_20px_rgba(0,0,0,0.15)]
-    hover:from-[#ff4a7c] hover:to-[#a42fc2]
+max-w-[358px] max-h-14 flex items-center justify-center gap-[10px]
+        font-inter font-semibold text-[14px] text-center text-white
+        px-7 py-3 rounded-[16px]
+        bg-gradient-to-b from-[#fb1555] to-[#8d1caa]
+        hover:shadow-[0_2px_20px_rgba(0,0,0,0.15)]
+        transition duration-700 ease-in-out
+        hover:from-[#ff4a7c] hover:to-[#a42fc2] lg:text-[16px]
   "
           >
             {isLoading ? (
               <span className="">Saving...</span>
             ) : (
               <div className="flex items-center justify-center gap-[10px]">
-                <span className="">Save My Spot</span>
+                <span className="">Sign Up</span>
                 <svg
-                  className="inline-block w-6 h-6"
-                  strokeWidth="1.5"
+                  className="inline-block w-4 h-4"
+                  strokeWidth="2"
                   stroke="#fff"
                   fill="none"
                 >

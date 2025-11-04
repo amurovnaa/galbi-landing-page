@@ -31,7 +31,7 @@ const AppBar = () => {
           />
         </a>
 
-        <div className="hidden lg:flex items-center justify-center gap-[90px]">
+        <div className="hidden lg:flex items-center justify-center gap-12">
           <Navigation textColor="text-black" />
           {isLoggedIn ? <UserMenu /> : <AuthNav />}
         </div>

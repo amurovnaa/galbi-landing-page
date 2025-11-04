@@ -48,15 +48,15 @@ export default function CultureQuizTeaser() {
 
   return (
     <section
-      className="py-16 bg-gradient-to-b from-pink-50 via-white to-pink-100 flex justify-center text-black"
+      className="py-[80px] bg-gradient-to-b from-pink-50 via-white to-pink-100 flex justify-center text-black"
       id="vibe-check"
     >
       <Container className="xl:px-[240px] flex flex-col items-center justify-center">
-        <div className="text-center mb-[36px] flex flex-col items-center justify-center">
-          <h2 className="font-lucida font-semibold text-[40px] sm:text-[50px] text-black mb-6">
+        <div className="text-center mb-10 flex flex-col items-center justify-center">
+          <h2 className="font-lucida font-semibold text-black mb-6 text-[40px] lg:text-[48px]">
             Earn Your Heritage Badge
           </h2>
-          <p className="text-xl text-black opacity-90 mb-6">
+          <p className="text-xl text-black opacity-90 mb-16">
             Every culture has its rhythm. Take the quiz, claim your badge.
           </p>
 
@@ -65,8 +65,8 @@ export default function CultureQuizTeaser() {
               <div className="relative">
                 <Listbox.Button
                   className="w-full bg-white rounded-lg p-4 
-                      font-normal text-base text-opacity-50 border border-solid 
-                      border-[rgba(255,255,255,0.3)] placeholder-white placeholder-opacity-60 focus:ring-1 focus:ring-pink-400 outline-none text-left flex justify-between items-center"
+                      font-normal text-[14px] text-opacity-50 border border-solid 
+                      border-[rgba(255,255,255,0.3)] placeholder-white placeholder-opacity-60 text-opacity-60 focus:ring-1 focus:ring-pink-400 outline-none text-left flex justify-between items-center"
                 >
                   <span>
                     {selectedCountry?.country || "Select Your Country"}
