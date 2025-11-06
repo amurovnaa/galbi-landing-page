@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import bgVideo from "../../assets/videos/galbi-hero-videos-high.mp4";
-import AppBar from "../AppBar/AppBar.jsx";
+import bgVideo from "../../assets/videos/galbi-hero-videos.mp4";
 import { motion, useAnimation, useInView } from "framer-motion";
 import Container from "../Container/Container.jsx";
 
