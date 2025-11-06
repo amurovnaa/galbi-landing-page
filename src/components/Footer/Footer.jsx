@@ -19,13 +19,13 @@ const Footer = () => {
               intentional connection.
             </h2>
             <ul className="flex flex-col gap-8 text-[18px] font-normal text-center mb-[55px] wrap md:flex-row">
-              <li className="opacity-90 hover:opacity-100">
+              <li className="">
                 <Link to="/story">Our Story</Link>
               </li>
-              <li className="opacity-90 hover:opacity-100">
+              <li className="">
                 <Link to="/privacy">Privacy & Terms</Link>
               </li>
-              <li className="opacity-90 hover:opacity-100">
+              <li className="">
                 <a href="/">Contact</a>
               </li>
             </ul>
@@ -70,7 +70,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <p className="leading-[1.4] font-normal text-lg text-center">
+            <p className="leading-[1.4] font-normal text-md text-center opacity-90">
               @ 2025 Galbi. All rights reserved.
             </p>
           </div>

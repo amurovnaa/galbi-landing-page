@@ -24,12 +24,15 @@ const SignUpSection = () => {
 
   return (
     <section
-      className="bg-cover bg-center bg-no-repeat rtl"
-      style={{ backgroundImage: `url(${signUpBg})` }}
+      className="relative bg-cover bg-center bg-no-repeat rtl"
+      style={{
+        backgroundImage: `url(${signUpBg})`,
+      }}
       id="sign-up"
       ref={ref}
     >
-      <Container className=" py-[90px] flex flex-col items-center justify-center gap-[60px] xxl:px-[360px]">
+      <div className="absolute inset-0 bg-black/40"></div>
+      <Container className="relative z-10 py-[90px] flex flex-col items-center justify-center gap-[60px] xxl:px-[360px]">
         <motion.div
           initial="hidden"
           animate={controls}
