@@ -51,7 +51,7 @@ export default function CultureQuizTeaser() {
       className="py-[80px] bg-gradient-to-b from-pink-50 via-white to-pink-100 flex justify-center text-black"
       id="vibe-check"
     >
-      <Container className="xl:px-[240px] flex flex-col items-center justify-center">
+      <Container className="xl:px-[140px] flex flex-col items-center justify-center">
         <div className="text-center mb-10 flex flex-col items-center justify-center">
           <h2 className="font-lucida font-semibold text-black mb-6 text-[40px] lg:text-[48px]">
             Earn Your Heritage Badge

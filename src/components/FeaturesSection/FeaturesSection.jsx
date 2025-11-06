@@ -60,7 +60,7 @@ const FeaturesSection = () => {
 
   return (
     <section className="text-center py-[80px] rtl" id="features" ref={ref}>
-      <Container className="xl:px-[240px] flex flex-col items-center justify-center">
+      <Container className="xl:px-[140px] flex flex-col items-center justify-center">
         <motion.h2
           className="font-lucida font-semibold text-center text-black mb-6 text-[40px] lg:text-[48px]"
           variants={fadeUp}

@@ -18,7 +18,7 @@ const textVariants = {
 const CommunitySection = () => {
   return (
     <section
-      className="bg-gradient-to-b from-pink-50 via-white to-pink-100 py-[80px] rtl"
+      className="bg-gradient-to-b from-pink-50 via-white to-pink-100 py-[60px] rtl"
       id="impact"
     >
       <Container className="relative flex items-center justify-center overflow-visible">
