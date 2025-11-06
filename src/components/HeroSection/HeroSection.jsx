@@ -58,7 +58,7 @@ const HeroSection = () => {
           </motion.h1>
 
           <motion.p
-            className="font-lufga italic font-medium text-[20px] text-center mb-[50px] opacity-90 lg:text-[28px]"
+            className="font-lufga italic font-medium text-[20px] text-center mb-[50px] opacity-90 lg:text-[22px]"
             variants={fadeUp}
           >
             Is it Galbi or Kalbi?
