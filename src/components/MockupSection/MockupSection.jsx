@@ -46,12 +46,15 @@ const MockupSection = () => {
             dating app built for people who value tradition, dialect, and
             intentional love — not swiping games
           </motion.p>
-          <p className="font-normal text-xl leading-normal text-center lg:text-left">
+          <motion.p
+            className="font-normal text-xl leading-normal text-center lg:text-left"
+            variants={textVariant}
+          >
             You’re not just looking for a match. You’re looking for someone who
             gets your dialect, your values, your rhythm. That’s why we built{" "}
             <span className="font-semibold">Galbi</span> for people who want
             connection with culture, not chaos.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Animated Mockup */}

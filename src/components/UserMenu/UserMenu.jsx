@@ -18,10 +18,10 @@ const UserMenu = () => {
       px-[34px] py-[10px]
       rounded-[16px]
       font-semibold text-[16px] text-center text-white
-      bg-gradient-to-r from-pink-600 to-rose-500
-      shadow-sm shadow-rose-500/20
-      transition duration-300 ease-in-out
-      hover:shadow-md hover:shadow-rose-500/30
+      bg-gradient-to-b from-[#fb1555] to-[#8d1caa]
+        hover:shadow-[0_2px_20px_rgba(0,0,0,0.15)]
+        transition duration-700 ease-in-out
+        hover:from-[#ff4a7c] hover:to-[#a42fc2]
    "
     >
       Log out
