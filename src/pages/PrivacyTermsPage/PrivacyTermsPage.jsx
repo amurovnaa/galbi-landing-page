@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Container from "../../components/Container/Container.jsx";
 import { ChevronDown } from "lucide-react";
 import { HashLink } from "react-router-hash-link";
+import useMeasure from "react-use-measure";
 
 const sections = [
   {
@@ -366,6 +367,7 @@ const sections = [
 
 const PrivacyTermsPage = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const [ref, { height }] = useMeasure();
 
   const toggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -381,28 +383,6 @@ const PrivacyTermsPage = () => {
           Effective date: November 1, 2025
         </p>
 
-        <div className="flex flex-col gap-1 mb-8">
-          <h2 className="font-semibold text-[22px] text-black mb-3 text-left">
-            Who we are
-          </h2>
-          <p className="font-normal text-[15px] leading-[1.4] text-black mb-2">
-            Galbi (operated by Acro North Ventures LLC, registered in the State
-            of Wyoming, USA) builds a culture-first dating experience where
-            dignity, heritage, and safety come first. This Privacy Policy
-            explains what information we collect, why we collect it, how we use
-            and share it, and the choices you have.
-          </p>
-          <p className="">
-            If you have questions about this policy or our data practices, email
-            us at{" "}
-            <a
-              href="mailto:contact@galbi.app"
-              className="text-[#480f57] font-bold underline"
-            >
-              contact@galbi.app
-            </a>
-          </p>
-        </div>
         <div className="space-y-4">
           {sections.map((section, index) => (
             <div
@@ -422,16 +402,25 @@ const PrivacyTermsPage = () => {
                 />
               </button>
 
-              <AnimatePresence>
+              <AnimatePresence initial={false}>
                 {openIndex === index && (
                   <motion.div
+                    key="content"
                     initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
+                    animate={{ height, opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="px-4 pb-4 text-gray-700 leading-relaxed text-[15px]"
+                    transition={{
+                      height: { duration: 0.4, ease: [0.45, 0, 0.25, 1] },
+                      opacity: { duration: 0.25 },
+                    }}
+                    className="overflow-hidden will-change-[height,opacity]"
                   >
-                    {section.content}
+                    <div
+                      ref={ref}
+                      className="px-4 pb-4 text-gray-700 leading-relaxed text-[15px]"
+                    >
+                      {section.content}
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
