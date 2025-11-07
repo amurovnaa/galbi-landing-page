@@ -3,6 +3,8 @@ import Layout from "./components/Layout/Layout.jsx";
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router";
 import Loader from "./components/Loader/Loader.jsx";
+import { Router } from "lucide-react";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx";
 
 const HomePage = lazy(
   () =>
@@ -18,6 +20,7 @@ const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 function App() {
   return (
     <>
+      <ScrollToTop />
       <Toaster position="top-center" />
       <Suspense fallback={<Loader />}>
         <Routes>

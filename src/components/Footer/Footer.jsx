@@ -1,7 +1,7 @@
 import galbiLogo from "../../assets/images/galbi-logo.webp";
 import footerBgImg from "../../assets/images/footer-bg.webp";
 import Container from "../Container/Container.jsx";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Footer = () => {
   return (
@@ -20,10 +20,10 @@ const Footer = () => {
             </h2>
             <ul className="flex flex-col gap-8 text-[18px] font-normal text-center mb-[55px] wrap md:flex-row">
               <li className="">
-                <Link to="/story">Our Story</Link>
+                <NavLink to="/story">Our Story</NavLink>
               </li>
               <li className="">
-                <Link to="/privacy">Privacy & Terms</Link>
+                <NavLink to="/privacy">Privacy & Terms</NavLink>
               </li>
               <li className="">
                 <a href="/">Contact</a>
