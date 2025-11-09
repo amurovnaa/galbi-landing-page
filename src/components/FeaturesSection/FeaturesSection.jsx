@@ -1,43 +1,43 @@
 import { useRef } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
-import feature1 from "../../assets/images/feature-1.webp";
-import feature2 from "../../assets/images/feature-2.webp";
-import feature3 from "../../assets/images/feature-3.webp";
-import feature4 from "../../assets/images/feature-4.webp";
-import feature5 from "../../assets/images/feature-5.webp";
-import feature6 from "../../assets/images/feature-6.webp";
+import featureIcon1 from "../../assets/videos/features-icons/VideoVerifiedProfiles.mp4";
+import featureIcon2 from "../../assets/videos/features-icons/Respect-FirstMessaging.mp4";
+import featureIcon3 from "../../assets/videos/features-icons/DiasporaBuilt.mp4";
+import featureIcon4 from "../../assets/videos/features-icons/Dialect&CultureMatching.mp4";
+import featureIcon5 from "../../assets/videos/features-icons/Intent-BasedDiscovery.mp4";
+import featureIcon6 from "../../assets/videos/features-icons/10ToCausesYouChoose.mp4";
 import Container from "../Container/Container.jsx";
 
 const features = [
   {
     title: "Video Verified Profiles",
     desc: "Profiles are real every face is verified by video.",
-    icon: feature1,
+    icon: featureIcon1,
   },
   {
     title: "Respect First Messaging",
     desc: "He can send one message. No chasing. No pressure.",
-    icon: feature2,
+    icon: featureIcon2,
   },
   {
     title: "Diaspora Built",
     desc: "Built by diaspora, not bought by big tech, and never for sale.",
-    icon: feature3,
+    icon: featureIcon3,
   },
   {
     title: "Dialect + Culture Matching",
     desc: "Match by dialect, not just distance, because language isn’t just location.",
-    icon: feature4,
+    icon: featureIcon4,
   },
   {
     title: "Intent Based Discovery",
     desc: "You choose if you’re looking for love, marriage, or just curious.",
-    icon: feature5,
+    icon: featureIcon5,
   },
   {
     title: "10% to Causes You Choose",
     desc: "10% of every subscription goes to the cause that matters most to you.",
-    icon: feature6,
+    icon: featureIcon6,
   },
 ];
 
@@ -90,15 +90,23 @@ const FeaturesSection = () => {
           {features.map((f, idx) => (
             <motion.li
               key={idx}
-              className="bg-white max-w-[453px] min-h-[269px] shadow-[0_1px_15px_0_rgba(0,0,0,0.05)] p-[30px] pr-[38px] rounded-[20px] hover:shadow-md transition-shadow duration-300"
+              className="bg-white max-w-[453px] min-h-[200px] shadow-[0_1px_15px_0_rgba(0,0,0,0.05)] p-[24px] pr-[38px] rounded-[20px] hover:shadow-md transition-shadow duration-300"
               variants={fadeUp}
             >
-              <div className="mb-[41px] rounded-[140px]">
-                <img src={f.icon} alt={f.title} className="w-[70px] h-[70px]" />
+              <div className="max-w-[110px] max-h-[62px] mb-4">
+                <video
+                  className="w-full h-full"
+                  src={f.icon}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
               </div>
-              <h3 className="font-semibold text-[22px] text-black mb-3 text-left">
+              <h3 className="text-left font-semibold text-[22px] text-black mb-3 text-left">
                 {f.title}
               </h3>
+
               <p className="font-normal text-xl leading-[1.4] text-black opacity-75 text-left">
                 {f.desc}
               </p>

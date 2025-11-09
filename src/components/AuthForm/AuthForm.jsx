@@ -126,9 +126,9 @@ export default function AuthForm() {
       {isLoading && <Loader />}
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="max-w-[1200px] w-full mx-auto  p-[50px]
+        className="max-w-[1200px] w-full mx-auto px-6 py-8
     rounded-[30px] backdrop-blur-[50px]
-    bg-[linear-gradient(135deg,rgba(196,196,196,0.12)_0%,rgba(196,196,196,0.12)_100%)]"
+    bg-[linear-gradient(135deg,rgba(196,196,196,0.12)_0%,rgba(196,196,196,0.12)_100%)] lg:p-[50px]"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-[30px]">
           <div className="max-h-[81px]">

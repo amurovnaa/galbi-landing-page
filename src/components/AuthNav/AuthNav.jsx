@@ -1,7 +1,10 @@
+import { HashLink } from "react-router-hash-link";
+
 const AuthNav = () => {
   return (
-    <a
-      href="#sign-up"
+    <HashLink
+      smooth
+      to="/#sign-up"
       className="flex justify-center items-center
       max-w-[161px] max-h-[62px]
       px-[34px] py-[10px]
@@ -14,7 +17,7 @@ const AuthNav = () => {
      "
     >
       Join Now
-    </a>
+    </HashLink>
   );
 };
 
