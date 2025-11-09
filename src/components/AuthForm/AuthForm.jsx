@@ -420,7 +420,7 @@ export default function AuthForm() {
             className="
 max-w-[358px] max-h-14 flex items-center justify-center gap-[10px]
         font-inter font-semibold text-[14px] text-center text-white
-        px-7 py-3 rounded-[16px]
+        px-7 py-3 rounded-full
         bg-gradient-to-b from-[#fb1555] to-[#8d1caa]
         hover:shadow-[0_2px_20px_rgba(0,0,0,0.15)]
         transition duration-700 ease-in-out
@@ -430,7 +430,7 @@ max-w-[358px] max-h-14 flex items-center justify-center gap-[10px]
             {isLoading ? (
               <span className="">Saving...</span>
             ) : (
-              <div className="flex items-center justify-center gap-[10px]">
+              <div className="flex items-center justify-center tracking-wider gap-[10px]">
                 <span className="">Sign Up</span>
                 <svg
                   className="inline-block w-4 h-4"

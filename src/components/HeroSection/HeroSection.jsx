@@ -76,7 +76,7 @@ const HeroSection = () => {
           <motion.button
             className="max-w-[358px] max-h-16 flex items-center justify-center gap-[10px]
               font-semibold text-[14px] text-center text-white
-              px-7 py-4 rounded-2xl
+              px-7 py-4 rounded-full tracking-wide
               bg-gradient-to-b from-[#fb1555] to-[#8d1caa]
               hover:shadow-[0_2px_20px_rgba(0,0,0,0.15)]
               hover:from-[#ff4a7c] hover:to-[#a42fc2] lg:text-[16px]

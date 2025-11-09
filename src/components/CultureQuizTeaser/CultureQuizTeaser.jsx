@@ -64,7 +64,7 @@ export default function CultureQuizTeaser() {
             <Listbox value={selectedCountry} onChange={setSelectedCountry}>
               <div className="relative">
                 <Listbox.Button
-                  className="w-full bg-white rounded-lg p-4 
+                  className="w-full bg-white rounded-full p-4 
                       font-normal text-[14px] text-opacity-50 border border-solid 
                       border-[rgba(255,255,255,0.3)] placeholder-white placeholder-opacity-60 text-opacity-60 focus:ring-1 focus:ring-pink-400 outline-none text-left flex justify-between items-center"
                 >
@@ -179,17 +179,17 @@ export default function CultureQuizTeaser() {
                     setSubmitted(false);
                     setScore(null);
                   }}
-                  className="w-[278px] h-16 flex items-center justify-center gap-[10px]
-                    font-inter font-semibold text-[19px] text-center text-white
-                    px-[34px] py-5 rounded-2xl
-                    bg-gradient-to-b from-[#fb1555] to-[#8d1caa]
-                    transition duration-700 ease-in-out
-                    hover:shadow-[0_2px_20px_rgba(0,0,0,0.15)]
-                    hover:from-[#ff4a7c] hover:to-[#a42fc2]"
+                  className="max-w-[358px] max-h-16 flex items-center justify-center gap-[10px]
+              font-semibold text-[14px] text-center text-white
+              px-7 py-4 rounded-full  tracking-wide
+              bg-gradient-to-b from-[#fb1555] to-[#8d1caa]
+              hover:shadow-[0_2px_20px_rgba(0,0,0,0.15)]
+              hover:from-[#ff4a7c] hover:to-[#a42fc2] lg:text-[16px]
+              "
                 >
                   <span>Try the Quiz</span>
                   <svg
-                    className="inline-block w-6 h-6"
+                    className="inline-block w-4 h-4"
                     strokeWidth="1.5"
                     stroke="#fff"
                     fill="none"

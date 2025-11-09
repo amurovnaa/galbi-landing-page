@@ -2,6 +2,7 @@ import galbiLogo from "../../assets/images/galbi-logo.webp";
 import footerBgImg from "../../assets/images/footer-bg.webp";
 import Container from "../Container/Container.jsx";
 import { Link, NavLink } from "react-router";
+import { HashLink } from "react-router-hash-link";
 
 const Footer = () => {
   return (
@@ -26,7 +27,9 @@ const Footer = () => {
                 <NavLink to="/privacy">Privacy & Terms</NavLink>
               </li>
               <li className="">
-                <a href="/">Contact</a>
+                <HashLink smooth to="/#features">
+                  Features
+                </HashLink>
               </li>
             </ul>
             <ul className="cursor-pointer flex gap-[30px] items-center wrap">

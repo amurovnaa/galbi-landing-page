@@ -14,7 +14,7 @@ const MarqueeTextSection = () => {
     <Link to="/story">
       <section className="overflow-hidden py-6 bg-gradient-to-b from-pink-50 via-white to-pink-100">
         <motion.ul
-          className="flex whitespace-nowrap text-black text-[15px] font-lufga italic"
+          className="flex whitespace-nowrap text-black text-[15px] opacity-80 font-lufga italic"
           animate={{ x: [0, -window.innerWidth * 2] }}
           transition={{ ease: "linear", duration: 50, repeat: Infinity }}
         >
