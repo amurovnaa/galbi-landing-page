@@ -26,29 +26,31 @@ const schema = yup.object({
 });
 
 const countries = [
+  // Pinned at the top
   "Palestine",
-  "Sudan",
-  "Pakistan",
   "Lebanon",
   "Jordan",
-  "Syria",
-  "Egypt",
   "Morocco",
+  "Egypt",
+  "Pakistan",
+
   "Algeria",
-  "Tunisia",
-  "Saudi Arabia",
-  "United Arab Emirates",
-  "Kuwait",
-  "Qatar",
-  "Bahrain",
-  "Oman",
-  "Iraq",
-  "Somalia",
-  "Bangladesh",
-  "India",
-  "Turkey",
   "Albania / Kosovo",
+  "Bahrain",
+  "Bangladesh",
   "Diaspora – 3rd Culture",
+  "Iraq",
+  "India",
+  "Kuwait",
+  "Oman",
+  "Qatar",
+  "Saudi Arabia",
+  "Somalia",
+  "Sudan",
+  "Syria",
+  "Turkey",
+  "Tunisia",
+  "United Arab Emirates",
 ];
 
 const genders = ["Male", "Female", "Prefer not to say"];

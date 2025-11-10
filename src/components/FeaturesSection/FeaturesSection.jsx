@@ -93,9 +93,9 @@ const FeaturesSection = () => {
               className="bg-white max-w-[453px] min-h-[200px] shadow-[0_1px_15px_0_rgba(0,0,0,0.05)] p-[24px] pr-[38px] rounded-[20px] hover:shadow-md transition-shadow duration-300"
               variants={fadeUp}
             >
-              <div className="max-w-[110px] max-h-[62px] mb-4">
+              <div className="flex items-center justify-center w-full mb-4">
                 <video
-                  className="w-full h-full"
+                  className=" max-w-[190px] h-full"
                   src={f.icon}
                   autoPlay
                   loop
