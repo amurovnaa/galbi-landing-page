@@ -60,14 +60,14 @@ const HeroSection = () => {
           variants={container}
         >
           <motion.h1
-            className="font-lucida font-semibold text-[40px] leading-[1.14] text-center text-white mb-6 lg:text-[50px] xl:text-[60px] relative will-change-transform"
+            className="font-lucida font-semibold text-[40px] leading-[1.14] text-center text-white mb-6 lg:text-[48px] relative will-change-transform"
             variants={fadeUp}
           >
-            Your background is just the beginning
+            Stop Swiping on Strangers. Find Love That Makes Your Family Proud
           </motion.h1>
 
           <motion.p
-            className="font-lufga italic font-medium text-[20px] text-center mb-[50px] text-white/90 lg:text-[22px] relative will-change-transform"
+            className="font-lufga italic font-medium text-[20px] text-center mb-[50px] text-white lg:text-[22px] relative will-change-transform"
             variants={fadeUp}
           >
             Is it Galbi or Kalbi?
@@ -76,14 +76,14 @@ const HeroSection = () => {
           <motion.button
             className="max-w-[358px] max-h-16 flex items-center justify-center gap-[10px]
               font-semibold text-[14px] text-center text-white
-              px-7 py-4 rounded-full tracking-wide
+              px-8 py-4 rounded-full tracking-wide
               bg-gradient-to-b from-[#fb1555] to-[#8d1caa]
               hover:shadow-[0_2px_20px_rgba(0,0,0,0.15)]
-              hover:from-[#ff4a7c] hover:to-[#a42fc2] lg:text-[16px]
+              hover:from-[#ff4a7c] hover:to-[#a42fc2] lg:text-[18px]
               "
             variants={fadeUp}
           >
-            <a href="#sign-up">Join the Founding Members</a>
+            <a href="#sign-up">Find Your Galbi</a>
             <svg
               className="inline-block w-4 h-4"
               strokeWidth="2"
@@ -93,6 +93,12 @@ const HeroSection = () => {
               <use href="/sprite.svg#icon-arrow-right"></use>
             </svg>
           </motion.button>
+          <motion.p
+            variants={fadeUp}
+            className="font-lufga italic font-medium text-[12px] text-center mt-[10px] text-white/75 relative will-change-transform"
+          >
+            Free to join. Built for the diaspora.
+          </motion.p>
         </motion.div>
       </Container>
     </section>

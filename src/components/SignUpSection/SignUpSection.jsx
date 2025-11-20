@@ -42,7 +42,7 @@ const SignUpSection = () => {
             className="font-lucida font-semibold text-center mb-6 text-[40px] lg:text-[48px]"
             variants={fadeUp}
           >
-            Join the Founding Members
+            Claim Your Spot
           </motion.h2>
           <motion.p
             className="font-normal text-xl leading-normal text-center opacity-[0.9]"
