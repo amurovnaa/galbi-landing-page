@@ -11,6 +11,7 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 import { Modal } from "../Modal/Modal.jsx";
 import Loader from "../Loader/Loader.jsx";
+import { countries } from "../../data/authCountries.js";
 
 // --- Validation Schema ---
 const schema = yup.object({
@@ -25,34 +26,6 @@ const schema = yup.object({
   gender: yup.string().required("Select your gender"),
   thoughts: yup.string().max(300, "Max 300 characters"),
 });
-
-const countries = [
-  // Pinned at the top
-  "Palestine",
-  "Lebanon",
-  "Jordan",
-  "Morocco",
-  "Egypt",
-  "Pakistan",
-
-  "Algeria",
-  "Albania / Kosovo",
-  "Bahrain",
-  "Bangladesh",
-  "Diaspora – 3rd Culture",
-  "Iraq",
-  "India",
-  "Kuwait",
-  "Oman",
-  "Qatar",
-  "Saudi Arabia",
-  "Somalia",
-  "Sudan",
-  "Syria",
-  "Turkey",
-  "Tunisia",
-  "United Arab Emirates",
-];
 
 const genders = ["Male", "Female", "Prefer not to say"];
 const causes = ["Palestine", "Sudan", "Yemen", "Ukraine", "Congo"];
