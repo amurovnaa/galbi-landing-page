@@ -5,7 +5,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../redux/auth/operations";
-import { selectIsRefreshing } from "../../redux/auth/selectors";
+// import { selectIsRefreshing } from "../../redux/auth/selectors";
+import { selectIsSaving } from "../../redux/auth/selectors.js";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { Modal } from "../Modal/Modal.jsx";
@@ -15,10 +16,10 @@ import Loader from "../Loader/Loader.jsx";
 const schema = yup.object({
   name: yup.string().required("Name is required"),
   email: yup.string().email("Invalid email").required("Email is required"),
-  password: yup
-    .string()
-    .min(6, "Minimum 6 characters")
-    .required("Password required"),
+  // password: yup
+  //   .string()
+  //   .min(6, "Minimum 6 characters")
+  //   .required("Password required"),
   country: yup.string().required("Country is required"),
   dialect: yup.string().required("Dialect or heritage is required"),
   gender: yup.string().required("Select your gender"),
@@ -58,7 +59,7 @@ const causes = ["Palestine", "Sudan", "Yemen", "Ukraine", "Congo"];
 
 export default function AuthForm() {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsRefreshing);
+  const isLoading = useSelector(selectIsSaving);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
 
@@ -74,7 +75,7 @@ export default function AuthForm() {
     defaultValues: {
       name: "",
       email: "",
-      password: "",
+      // password: "",
       country: "",
       dialect: "",
       gender: "",
@@ -95,7 +96,7 @@ export default function AuthForm() {
     console.log("IsLoads:", isLoading);
     const payload = {
       email: data.email,
-      password: data.password,
+      // password: data.password,
       displayName: data.name,
       country: data.country,
       dialect: data.dialect,
@@ -112,14 +113,15 @@ export default function AuthForm() {
     dispatch(registerUser(payload))
       .unwrap()
       .then(() => {
-        toast.success("You’re in! We’ll email you when your city opens.");
-        reset();
         if (data.wantAmbassador || data.wantCollaborate) {
           setModalMessage(
             "We love that you want to help build Galbi. We’ll reach out soon 🩷"
           );
           setModalOpen(true);
+        } else {
+          toast.success("You’re in! We’ll email you when your city opens.");
         }
+        reset();
       });
   };
 
@@ -163,7 +165,7 @@ export default function AuthForm() {
           </div>
 
           {/* Password */}
-          <div>
+          {/* <div>
             <label className="font-normal text-base leading-[1.4] block mb-2">
               Password
             </label>
@@ -176,7 +178,7 @@ export default function AuthForm() {
             border-[rgba(255,255,255,0.3)] focus:ring-1 focus:ring-pink-400 outline-none"
             />
             <p className="text-red-400 text-sm">{errors.password?.message}</p>
-          </div>
+          </div> */}
 
           {/* Country */}
           <div>

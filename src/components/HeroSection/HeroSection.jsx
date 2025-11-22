@@ -51,7 +51,7 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <Container className="relative z-10 mt-[232px] mb-[130px] flex flex-col justify-center items-center gap-[100px]">
+      <Container className="relative z-10 mt-[60px] flex flex-col justify-center items-center gap-[100px]">
         <motion.div
           ref={ref}
           className="max-w-[856px] flex flex-col items-center justify-center"
@@ -60,18 +60,11 @@ const HeroSection = () => {
           variants={container}
         >
           <motion.h1
-            className="font-lucida font-semibold text-[40px] leading-[1.14] text-center text-white mb-6 lg:text-[48px] relative will-change-transform"
+            className="font-lucida font-semibold text-[40px] leading-[1.14] text-center text-white mb-[72px] lg:text-[48px] relative will-change-transform"
             variants={fadeUp}
           >
             Stop Swiping on Strangers. Find Love That Makes Your Family Proud
           </motion.h1>
-
-          <motion.p
-            className="font-lufga italic font-medium text-[20px] text-center mb-[50px] text-white lg:text-[22px] relative will-change-transform"
-            variants={fadeUp}
-          >
-            Is it Galbi or Kalbi?
-          </motion.p>
 
           <motion.button
             className="max-w-[358px] max-h-16 flex items-center justify-center gap-[10px]
@@ -85,7 +78,7 @@ const HeroSection = () => {
           >
             <a href="#sign-up">Find Your Galbi</a>
             <svg
-              className="inline-block w-4 h-4"
+              className="inline-block w-6 h-6"
               strokeWidth="2"
               stroke="#fff"
               fill="none"

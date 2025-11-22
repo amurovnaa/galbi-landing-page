@@ -4,9 +4,9 @@ import { IoMdClose } from "react-icons/io";
 import galbiLogo from "../../assets/images/galbi-logo.webp";
 import AuthNav from "../AuthNav/AuthNav.jsx";
 import Navigation from "../Navigation/Navigation.jsx";
-import { selectIsLoggedIn } from "../../redux/auth/selectors.js";
-import UserMenu from "../UserMenu/UserMenu.jsx";
-import { useSelector } from "react-redux";
+// import { selectIsLoggedIn } from "../../redux/auth/selectors.js";
+// import UserMenu from "../UserMenu/UserMenu.jsx";
+// import { useSelector } from "react-redux";
 
 const AppBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,7 +18,7 @@ const AppBar = () => {
     const target = event.target.closest("a");
     if (target) closeMenu();
   };
-  const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <header className="w-full bg-transparent">
@@ -33,7 +33,8 @@ const AppBar = () => {
 
         <div className="hidden lg:flex items-center justify-center gap-12">
           <Navigation textColor="text-black" />
-          {isLoggedIn ? <UserMenu /> : <AuthNav />}
+          <AuthNav />
+          {/* {isLoggedIn ? <UserMenu /> : <AuthNav />} */}
         </div>
 
         <button
@@ -59,7 +60,8 @@ const AppBar = () => {
           onClick={handleLinkClick}
         >
           <Navigation textColor="text-white" />
-          {isLoggedIn ? <UserMenu /> : <AuthNav />}
+          <AuthNav />
+          {/* {isLoggedIn ? <UserMenu /> : <AuthNav />} */}
         </div>
       </div>
     </header>
